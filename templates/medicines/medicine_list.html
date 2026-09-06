@@ -1,0 +1,796 @@
+{% extends 'base.html' %}
+{% block title %}Medicines | HealthNest{% endblock %}
+
+{% block content %}
+
+<style>
+
+/* =====================================================
+   HEALTHNEST MEDICINE PAGE
+   Color-balanced version
+   ===================================================== */
+
+.medicine-page {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 0 20px;
+  background: #f4faf9;
+}
+
+
+/* =====================================================
+   HEADER
+   ===================================================== */
+
+.medicine-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.medicine-header h2 {
+  color: #173f46;
+  margin: 0;
+}
+
+
+/* =====================================================
+   ADD MEDICINE BUTTON
+   ===================================================== */
+
+.btn-add-medicine {
+  background-color: #168c91;
+  color: #ffffff;
+
+  border: none;
+
+  padding: 10px 16px;
+
+  font-size: 16px;
+  font-weight: 700;
+
+  border-radius: 10px;
+
+  cursor: pointer;
+
+  transition: background 0.2s ease,
+              transform 0.2s ease;
+}
+
+.btn-add-medicine:hover {
+  background-color: #126f73;
+
+  transform: translateY(-2px);
+}
+
+
+/* =====================================================
+   MEDICINE GRID
+   ===================================================== */
+
+.medicine-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, 1fr);
+
+  gap: 24px;
+}
+
+
+/* =====================================================
+   MORNING / AFTERNOON / NIGHT COLUMNS
+   ===================================================== */
+
+.medicine-column {
+  background: #eaf6f5;
+
+  padding: 20px;
+
+  border-radius: 16px;
+
+  border: 1px solid #dceeed;
+
+  min-height: 360px;
+
+  box-sizing: border-box;
+}
+
+
+.medicine-column h3 {
+  text-align: center;
+
+  margin-bottom: 20px;
+
+  color: #173f46;
+
+  font-size: 22px;
+}
+
+
+/* =====================================================
+   MEDICINE CARD
+   ===================================================== */
+
+.medicine-card {
+  background: #ffffff;
+
+  padding: 16px;
+
+  margin-bottom: 16px;
+
+  border-radius: 14px;
+
+  border: 1px solid #e5eeee;
+
+  box-shadow:
+    0 4px 12px rgba(30, 60, 65, 0.07);
+}
+
+
+.medicine-card h4 {
+  font-size: 20px;
+
+  margin-top: 0;
+  margin-bottom: 8px;
+
+  color: #173f46;
+}
+
+
+.medicine-card p {
+  font-size: 16px;
+
+  margin: 5px 0;
+
+  color: #40565a;
+}
+
+
+/* =====================================================
+   LOW STOCK
+   ===================================================== */
+
+.low-stock {
+  color: #d83b3b;
+
+  font-weight: 700;
+
+  margin-top: 8px;
+}
+
+
+/* =====================================================
+   ACTION BUTTONS
+   ===================================================== */
+
+.actions {
+  display: flex;
+
+  flex-wrap: wrap;
+
+  gap: 10px;
+
+  margin-top: 14px;
+}
+
+
+/* =====================================================
+   TAKEN
+   ===================================================== */
+
+.btn-taken {
+  background-color: #2f8f83;
+
+  color: #ffffff;
+
+  border: none;
+
+  padding: 10px 14px;
+
+  font-size: 16px;
+
+  border-radius: 10px;
+
+  cursor: pointer;
+
+  font-weight: 700;
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+
+.btn-taken:hover {
+  background-color: #26786e;
+
+  transform: translateY(-2px);
+}
+
+
+/* =====================================================
+   SKIPPED
+   ===================================================== */
+
+.btn-skipped {
+  background-color: #d95c5c;
+
+  color: #ffffff;
+
+  border: none;
+
+  padding: 10px 14px;
+
+  font-size: 16px;
+
+  border-radius: 10px;
+
+  cursor: pointer;
+
+  font-weight: 700;
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+
+.btn-skipped:hover {
+  background-color: #c54d4d;
+
+  transform: translateY(-2px);
+}
+
+
+/* =====================================================
+   DELETE
+   ===================================================== */
+
+.btn-delete {
+  background-color: #687477;
+
+  color: #ffffff;
+
+  border: none;
+
+  padding: 10px 14px;
+
+  font-size: 16px;
+
+  border-radius: 10px;
+
+  cursor: pointer;
+
+  font-weight: 700;
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+
+.btn-delete:hover {
+  background-color: #566265;
+
+  transform: translateY(-2px);
+}
+
+
+/* =====================================================
+   EMPTY COLUMN TEXT
+   ===================================================== */
+
+.empty-text {
+  text-align: center;
+
+  color: #718083;
+
+  font-size: 16px;
+
+  margin-top: 25px;
+}
+
+
+/* =====================================================
+   DELETE MODAL
+   ===================================================== */
+
+.modal {
+  display: none;
+
+  position: fixed;
+
+  z-index: 9999;
+
+  left: 0;
+
+  top: 0;
+
+  width: 100%;
+
+  height: 100%;
+
+  background-color:
+    rgba(23, 63, 70, 0.55);
+}
+
+
+.modal-content {
+  background: #ffffff;
+
+  margin: 15% auto;
+
+  padding: 28px;
+
+  width: 90%;
+
+  max-width: 400px;
+
+  border-radius: 18px;
+
+  text-align: center;
+
+  box-shadow:
+    0 15px 40px rgba(30, 60, 65, 0.18);
+}
+
+
+.modal-content h2 {
+  color: #173f46;
+
+  margin-top: 0;
+}
+
+
+.modal-content p {
+  color: #657679;
+
+  line-height: 1.5;
+}
+
+
+/* =====================================================
+   MODAL DELETE BUTTON
+   ===================================================== */
+
+.modal-content .btn-skipped {
+  margin-right: 8px;
+}
+
+
+/* =====================================================
+   MODAL CANCEL BUTTON
+   ===================================================== */
+
+.modal-content button[type="button"] {
+  background-color: #687477;
+
+  color: #ffffff;
+
+  border: none;
+
+  padding: 10px 14px;
+
+  font-size: 16px;
+
+  border-radius: 10px;
+
+  cursor: pointer;
+
+  font-weight: 700;
+}
+
+
+.modal-content button[type="button"]:hover {
+  background-color: #566265;
+}
+
+
+/* =====================================================
+   MOBILE
+   ===================================================== */
+
+@media (max-width: 900px) {
+
+  .medicine-grid {
+    grid-template-columns: 1fr;
+  }
+
+}
+
+
+@media (max-width: 650px) {
+
+  .medicine-header {
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    gap: 15px;
+  }
+
+  .medicine-header h2 {
+    font-size: 26px;
+  }
+
+  .medicine-page {
+    margin-top: 25px;
+
+    padding:
+      0 15px;
+  }
+
+  .medicine-column {
+    padding: 16px;
+  }
+
+}
+
+</style>
+
+
+<section class="medicine-page">
+
+  <div class="medicine-header">
+
+    <h2>
+      💊 Daily Medicine Schedule
+    </h2>
+
+    <a href="{% url 'add_medicine' %}">
+      <button class="btn-add-medicine">
+        ➕ Add Medicine
+      </button>
+    </a>
+
+  </div>
+
+
+  <div class="medicine-grid">
+
+
+    <!-- =================================================
+         MORNING
+         ================================================= -->
+
+    <div class="medicine-column">
+
+      <h3>
+        🌞 Morning
+      </h3>
+
+      {% for dose in morning_doses %}
+
+        <div class="medicine-card">
+
+          <h4>
+            {{ dose.medicine.name }}
+          </h4>
+
+          <p>
+            Dosage: {{ dose.medicine.dosage }}
+          </p>
+
+          <p>
+            📦 Stock: {{ dose.medicine.stock }}
+          </p>
+
+
+          {% if dose.medicine.stock <= dose.medicine.low_stock_alert %}
+
+            <p class="low-stock">
+              ⚠ Low stock – refill soon
+            </p>
+
+          {% endif %}
+
+
+          <div class="actions">
+
+            <a href="{% url 'mark_taken' dose.id %}">
+              <button class="btn-taken">
+                ✅ Taken
+              </button>
+            </a>
+
+
+            <a href="{% url 'mark_skipped' dose.id %}">
+              <button class="btn-skipped">
+                ❌ Skipped
+              </button>
+            </a>
+
+
+            <button
+              type="button"
+              class="btn-delete"
+              onclick="openDeleteModal(
+                '{{ dose.medicine.id }}',
+                '{{ dose.medicine.name }}'
+              )">
+
+              🗑️ Remove
+
+            </button>
+
+          </div>
+
+        </div>
+
+
+      {% empty %}
+
+        <p class="empty-text">
+          No morning medicines
+        </p>
+
+      {% endfor %}
+
+    </div>
+
+
+
+    <!-- =================================================
+         AFTERNOON
+         ================================================= -->
+
+    <div class="medicine-column">
+
+      <h3>
+        🌤️ Afternoon
+      </h3>
+
+
+      {% for dose in afternoon_doses %}
+
+        <div class="medicine-card">
+
+          <h4>
+            {{ dose.medicine.name }}
+          </h4>
+
+          <p>
+            Dosage: {{ dose.medicine.dosage }}
+          </p>
+
+          <p>
+            📦 Stock: {{ dose.medicine.stock }}
+          </p>
+
+
+          {% if dose.medicine.stock <= dose.medicine.low_stock_alert %}
+
+            <p class="low-stock">
+              ⚠ Low stock – refill soon
+            </p>
+
+          {% endif %}
+
+
+          <div class="actions">
+
+            <a href="{% url 'mark_taken' dose.id %}">
+              <button class="btn-taken">
+                ✅ Taken
+              </button>
+            </a>
+
+
+            <a href="{% url 'mark_skipped' dose.id %}">
+              <button class="btn-skipped">
+                ❌ Skipped
+              </button>
+            </a>
+
+
+            <button
+              type="button"
+              class="btn-delete"
+              onclick="openDeleteModal(
+                '{{ dose.medicine.id }}',
+                '{{ dose.medicine.name }}'
+              )">
+
+              🗑️ Remove
+
+            </button>
+
+          </div>
+
+        </div>
+
+
+      {% empty %}
+
+        <p class="empty-text">
+          No afternoon medicines
+        </p>
+
+      {% endfor %}
+
+    </div>
+
+
+
+    <!-- =================================================
+         NIGHT
+         ================================================= -->
+
+    <div class="medicine-column">
+
+      <h3>
+        🌙 Night
+      </h3>
+
+
+      {% for dose in night_doses %}
+
+        <div class="medicine-card">
+
+          <h4>
+            {{ dose.medicine.name }}
+          </h4>
+
+          <p>
+            Dosage: {{ dose.medicine.dosage }}
+          </p>
+
+          <p>
+            📦 Stock: {{ dose.medicine.stock }}
+          </p>
+
+
+          {% if dose.medicine.stock <= dose.medicine.low_stock_alert %}
+
+            <p class="low-stock">
+              ⚠ Low stock – refill soon
+            </p>
+
+          {% endif %}
+
+
+          <div class="actions">
+
+            <a href="{% url 'mark_taken' dose.id %}">
+              <button class="btn-taken">
+                ✅ Taken
+              </button>
+            </a>
+
+
+            <a href="{% url 'mark_skipped' dose.id %}">
+              <button class="btn-skipped">
+                ❌ Skipped
+              </button>
+            </a>
+
+
+            <button
+              type="button"
+              class="btn-delete"
+              onclick="openDeleteModal(
+                '{{ dose.medicine.id }}',
+                '{{ dose.medicine.name }}'
+              )">
+
+              🗑️ Remove
+
+            </button>
+
+          </div>
+
+        </div>
+
+
+      {% empty %}
+
+        <p class="empty-text">
+          No night medicines
+        </p>
+
+      {% endfor %}
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     DELETE MODAL
+     ===================================================== -->
+
+<div id="deleteModal" class="modal">
+
+  <div class="modal-content">
+
+    <h2>
+      ⚠️ Remove Medicine
+    </h2>
+
+    <p>
+      Are you sure you want to remove:
+    </p>
+
+    <p>
+      <strong id="medicineName"></strong>
+    </p>
+
+    <p>
+      This will stop reminders and remove history.
+    </p>
+
+
+    <form
+      id="deleteForm"
+      method="post"
+      data-url-template="{% url 'delete_medicine' 0 %}">
+
+      {% csrf_token %}
+
+      <button
+        type="submit"
+        class="btn-skipped">
+
+        🗑️ Delete
+
+      </button>
+
+
+      <button
+        type="button"
+        onclick="closeDeleteModal()">
+
+        ❌ Cancel
+
+      </button>
+
+    </form>
+
+  </div>
+
+</div>
+
+
+
+<script>
+
+function openDeleteModal(id, name) {
+
+  document.getElementById('medicineName').innerText =
+    "💊 " + name;
+
+
+  const form =
+    document.getElementById('deleteForm');
+
+
+  const baseUrl =
+    form.dataset.urlTemplate
+      .replace('/0/', `/${id}/`);
+
+
+  form.action = baseUrl;
+
+
+  document.getElementById('deleteModal')
+    .style.display = 'block';
+
+}
+
+
+function closeDeleteModal() {
+
+  document.getElementById('deleteModal')
+    .style.display = 'none';
+
+}
+
+</script>
+
+
+{% endblock %}

@@ -1,0 +1,203 @@
+{% extends 'base.html' %}
+
+{% block title %}Medical Reports | HealthNest{% endblock %}
+
+{% block content %}
+
+<div class="reports-page">
+
+    <div class="reports-header">
+
+        <div>
+            <span class="dashboard-label">
+                MEDICAL RECORDS
+            </span>
+
+            <h1>My Medical Reports</h1>
+
+            <p>
+                Upload and organize your medical reports in one secure place.
+            </p>
+        </div>
+
+    </div>
+
+
+    <!-- UPLOAD REPORT -->
+
+    <div class="report-upload-card">
+
+        <h2>Upload a Report</h2>
+
+        <p>
+            Add a medical report such as a blood test, scan or health checkup.
+        </p>
+
+        <form method="POST" enctype="multipart/form-data">
+
+            {% csrf_token %}
+
+            <div class="report-form-grid">
+
+                <div class="form-field">
+
+                    <label>
+                        Report Name
+                    </label>
+
+                    <input
+                        type="text"
+                        name="report_name"
+                        placeholder="e.g. Blood Test - August 2026"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-field">
+
+                    <label>
+                        Report Date
+                    </label>
+
+                    <input
+                        type="date"
+                        name="report_date"
+                    >
+
+                </div>
+
+            </div>
+
+
+            <div class="form-field">
+
+                <label>
+                    Upload File
+                </label>
+
+                <input
+                    type="file"
+                    name="report_file"
+                    accept=".pdf,.jpg,.jpeg,.png"
+                    required
+                >
+
+            </div>
+
+
+            <button
+                type="submit"
+                class="profile-save-btn"
+            >
+                📤 Upload Report
+            </button>
+
+        </form>
+
+    </div>
+
+
+    <!-- EXISTING REPORTS -->
+
+    <div class="reports-list-section">
+
+        <div class="section-title">
+
+            <span>
+                YOUR RECORDS
+            </span>
+
+            <h2>
+                Uploaded Reports
+            </h2>
+
+        </div>
+
+
+        {% if reports %}
+
+            <div class="reports-list">
+
+                {% for report in reports %}
+
+                    <div class="report-card">
+
+                        <div class="report-icon">
+                            📄
+                        </div>
+
+
+                        <div class="report-info">
+
+                            <h3>
+                                {{ report.report_name }}
+                            </h3>
+
+                            <p>
+
+                                {% if report.report_date %}
+                                    Report date: {{ report.report_date }}
+                                {% else %}
+                                    Date not provided
+                                {% endif %}
+
+                            </p>
+
+                            <small>
+                                Uploaded: {{ report.uploaded_at|date:"d M Y" }}
+                            </small>
+
+                        </div>
+
+
+                       <div class="report-actions">
+
+    <a
+        href="{{ report.report_file.url }}"
+        target="_blank"
+        class="report-view-btn"
+    >
+        View Report →
+    </a>
+
+   <a
+    href="{% url 'report_summary' report.id %}"
+    class="report-summary-btn"
+>
+    🤖 AI Summary
+</a>
+
+</div>
+                    </div>
+
+                {% endfor %}
+
+            </div>
+
+        {% else %}
+
+            <div class="empty-reports">
+
+                <div>
+                    📂
+                </div>
+
+                <h3>
+                    No reports yet
+                </h3>
+
+                <p>
+                    Upload your first medical report above.
+                </p>
+
+            </div>
+
+        {% endif %}
+
+    </div>
+
+</div>
+
+{% endblock %}

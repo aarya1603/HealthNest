@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Add Emergency Contact | HealthNest</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #fff8f8;
+            color: #193f46;
+        }
+
+        .navbar {
+            height: 72px;
+            background: white;
+            border-bottom: 1px solid #e5eeee;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0 7%;
+        }
+
+        .logo {
+            font-size: 30px;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 35px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #52666b;
+            font-weight: bold;
+            font-size: 17px;
+        }
+
+        .nav-links a:hover {
+            color: #1996a3;
+        }
+
+        .page {
+            min-height: calc(100vh - 72px);
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            padding: 60px 20px;
+        }
+
+        .card {
+            width: 680px;
+            max-width: 100%;
+
+            background: white;
+
+            border: 1px solid #e0eaea;
+            border-radius: 22px;
+
+            padding: 50px;
+
+            box-shadow:
+                0 10px 30px rgba(0, 0, 0, 0.06);
+        }
+
+        h1 {
+            margin-top: 0;
+            font-size: 36px;
+            color: #193f46;
+        }
+
+        .description {
+            color: #65787d;
+            font-size: 17px;
+            line-height: 1.6;
+
+            margin-bottom: 40px;
+        }
+
+        label {
+            display: block;
+
+            font-size: 17px;
+            font-weight: bold;
+
+            margin-bottom: 10px;
+        }
+
+        input,
+        select {
+
+            width: 100%;
+
+            padding: 15px;
+
+            border: 1px solid #d5e1e3;
+            border-radius: 12px;
+
+            font-size: 16px;
+
+            margin-bottom: 25px;
+
+            background: #fbfefe;
+        }
+
+        input:focus,
+        select:focus {
+            outline: none;
+            border-color: #2099a5;
+        }
+
+        .save-button {
+
+            width: 100%;
+
+            border: none;
+            border-radius: 12px;
+
+            padding: 16px;
+
+            background: #2398a3;
+            color: white;
+
+            font-size: 17px;
+            font-weight: bold;
+
+            cursor: pointer;
+        }
+
+        .save-button:hover {
+            background: #1c7f89;
+        }
+
+        .back-button {
+
+            display: block;
+
+            width: 100%;
+
+            margin-top: 15px;
+
+            padding: 15px;
+
+            text-align: center;
+
+            text-decoration: none;
+
+            color: #2398a3;
+
+            border: 2px solid #2398a3;
+            border-radius: 12px;
+
+            font-weight: bold;
+        }
+
+        .back-button:hover {
+            background: #effafa;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- NAVBAR -->
+
+    <nav class="navbar">
+
+        <div class="logo">
+            💙 HealthNest
+        </div>
+
+       <div class="nav-links">
+
+    <a href="/">
+        Home
+    </a>
+
+    <a href="{% url 'medicine_list' %}">
+        💊 Medicines
+    </a>
+
+    <a href="{% url 'games' %}">
+        🎮 Games
+    </a>
+
+    <a href="{% url 'contact_list' %}">
+        Contact
+    </a>
+
+    <a href="{% url 'emergency' %}">
+        🚨 Emergency
+    </a>
+
+</div>
+
+    </nav>
+
+
+    <!-- PAGE -->
+
+    <main class="page">
+
+        <div class="card">
+
+            <h1>
+                👥 Add Emergency Contact
+            </h1>
+
+            <p class="description">
+                Add a trusted family member or caregiver
+                who can be contacted during an emergency.
+            </p>
+
+
+            <form
+                method="POST"
+                action="{% url 'add_emergency_contact' %}"
+            >
+
+                {% csrf_token %}
+
+
+                <!-- NAME -->
+
+                <label for="name">
+                    Name
+                </label>
+
+                <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    placeholder="e.g. Mom"
+                    required
+                >
+
+
+                <!-- RELATIONSHIP -->
+
+                <label for="relationship">
+                    Relationship
+                </label>
+
+                <select
+                    id="relationship"
+                    name="relationship"
+                    required
+                >
+
+                    <option value="">
+                        Select relationship
+                    </option>
+
+                    <option value="Mother">
+                        Mother
+                    </option>
+
+                    <option value="Father">
+                        Father
+                    </option>
+
+                    <option value="Brother">
+                        Brother
+                    </option>
+
+                    <option value="Sister">
+                        Sister
+                    </option>
+
+                    <option value="Spouse">
+                        Spouse
+                    </option>
+
+                    <option value="Son">
+                        Son
+                    </option>
+
+                    <option value="Daughter">
+                        Daughter
+                    </option>
+
+                    <option value="Friend">
+                        Friend
+                    </option>
+
+                    <option value="Caregiver">
+                        Caregiver
+                    </option>
+
+                    <option value="Other">
+                        Other
+                    </option>
+
+                </select>
+
+
+                <!-- PHONE -->
+
+                <label for="phone">
+                    Phone Number
+                </label>
+
+                <input
+                    type="tel"
+                    id="phone"
+                    name="phone"
+                    placeholder="+91 9999999999"
+                    required
+                >
+
+
+                <!-- SAVE -->
+
+                <button
+                    type="submit"
+                    class="save-button"
+                >
+                    💾 Save Emergency Contact
+                </button>
+
+
+                <!-- BACK -->
+
+                <a
+                    href="{% url 'emergency' %}"
+                    class="back-button"
+                >
+                    ← Back to Emergency
+                </a>
+
+            </form>
+
+        </div>
+
+    </main>
+
+
+</body>
+
+</html>

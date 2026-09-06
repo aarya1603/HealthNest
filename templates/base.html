@@ -1,0 +1,173 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{% block title %}HealthNest{% endblock %}</title>
+
+    <!-- Existing CSS -->
+    <link rel="stylesheet" href="{% static 'Care360/Contact.css' %}">
+    <link rel="stylesheet" href="{% static 'Care360/Care360.css' %}">
+
+    <!-- New global stylesheet -->
+    <link rel="stylesheet" href="{% static 'Care360/main.css' %}">
+
+    {% block extra_css %}{% endblock %}
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+
+<header class="site-header">
+
+    <div class="nav-container">
+
+        <a href="/" class="logo">
+            <span class="logo-icon">✚</span>
+            <span>Health<span>Nest</span></span>
+        </a>
+
+        <nav class="navbar">
+
+            <a href="/" class="nav-link">
+                Dashboard
+            </a>
+
+            <a href="{% url 'medicine_list' %}" class="nav-link">
+                Medicines
+            </a>
+
+           <a href="{% url 'checkup_list' %}" class="nav-link">
+    Checkups
+</a>
+
+<a href="{% url 'emergency' %}" class="nav-link emergency-nav">
+    Emergency
+</a>
+
+<a href="{% url 'safetycare' %}" class="nav-link">
+    Safety & Care
+</a>
+
+<a href="{% url 'report_list' %}" class="nav-link">
+    Reports
+</a>
+
+<a href="{% url 'insurance_list' %}" class="nav-link">
+    Insurance
+</a>
+
+        </nav>
+
+        <a href="{% url 'emergency' %}" class="emergency-button">
+            🚨 Emergency
+        </a>
+
+    </div>
+
+</header>
+
+
+<!-- ================= MAIN CONTENT ================= -->
+
+<main>
+    {% block content %}
+    {% endblock %}
+</main>
+
+
+<!-- ================= AI ASSISTANT ================= -->
+
+<div class="ai-bot">
+
+    <button id="ai-button" class="ai-button" aria-label="Open AI Assistant">
+        🤖
+    </button>
+
+    <div id="ai-chat" class="ai-chat">
+
+        <div class="ai-header">
+
+            <div>
+                <strong>💙 HealthNest Assistant</strong>
+                <small>Here to help</small>
+            </div>
+
+            <button id="ai-close" aria-label="Close assistant">
+                ×
+            </button>
+
+        </div>
+
+        <div id="ai-messages" class="ai-messages">
+
+            <div class="bot-message">
+                👋 Hi! I'm your HealthNest Assistant.
+                <br><br>
+                How can I help you today?
+            </div>
+
+        </div>
+
+        <div class="ai-input-area">
+
+            <input
+                type="text"
+                id="ai-input"
+                placeholder="Ask your health assistant..."
+            >
+
+            <button id="ai-send">
+                ➤
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="{% static 'Care360/ai-bot.js' %}"></script>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer class="site-footer">
+
+    <div class="footer-container">
+
+        <div class="footer-brand">
+
+            <h2>
+                <span>✚</span> HealthNest
+            </h2>
+
+            <p>
+                Your health, connected in one place.
+            </p>
+
+        </div>
+
+        <div class="footer-links">
+
+            <a href="/">Dashboard</a>
+            <a href="{% url 'medicine_list' %}">Medicines</a>
+            <a href="{% url 'emergency' %}">Emergency</a>
+            <a href="{% url 'safetycare' %}">Safety & Care</a>
+
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+        © 2026 HealthNest · Built for better healthcare management.
+    </div>
+
+</footer>
+
+</body>
+</html>

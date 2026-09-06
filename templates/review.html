@@ -1,0 +1,189 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+Share Your Experience | HealthNest
+{% endblock %}
+
+{% block content %}
+
+<section class="review-page">
+
+    <div class="review-container">
+
+        <div class="review-header">
+
+            <span class="section-label">
+                SHARE YOUR EXPERIENCE
+            </span>
+
+            <h1>
+                💙 We'd Love Your Feedback
+            </h1>
+
+            <p>
+                Your feedback helps us make HealthNest
+                better for everyone.
+            </p>
+
+        </div>
+
+
+        {% if success %}
+
+        <div class="success-message">
+
+            ✅ Thank you for your feedback!
+
+            <br>
+
+            Your review has been sent successfully.
+
+        </div>
+
+        {% endif %}
+
+
+        <div class="review-card">
+
+            <form
+                method="POST"
+                action="{% url 'review' %}"
+            >
+
+                {% csrf_token %}
+
+                <input
+                    type="hidden"
+                    name="form_type"
+                    value="review"
+                >
+
+
+                <!-- NAME -->
+
+                <div class="form-group">
+
+                    <label for="review-name">
+                        Your Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="review-name"
+                        name="name"
+                        placeholder="Enter your name"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- EMAIL -->
+
+                <div class="form-group">
+
+                    <label for="review-email">
+                        Your Email
+                    </label>
+
+                    <input
+                        type="email"
+                        id="review-email"
+                        name="email"
+                        placeholder="Enter your email"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- RATING -->
+
+                <div class="form-group">
+
+                    <label for="rating">
+                        How would you rate HealthNest?
+                    </label>
+
+                    <select
+                        id="rating"
+                        name="rating"
+                        required
+                    >
+
+                        <option value="">
+                            Select a rating
+                        </option>
+
+                        <option value="5">
+                            ⭐⭐⭐⭐⭐ Excellent
+                        </option>
+
+                        <option value="4">
+                            ⭐⭐⭐⭐ Very Good
+                        </option>
+
+                        <option value="3">
+                            ⭐⭐⭐ Good
+                        </option>
+
+                        <option value="2">
+                            ⭐⭐ Needs Improvement
+                        </option>
+
+                        <option value="1">
+                            ⭐ Poor
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- REVIEW -->
+
+                <div class="form-group">
+
+                    <label for="review">
+                        Your Review
+                    </label>
+
+                    <textarea
+                        id="review"
+                        name="review"
+                        rows="7"
+                        placeholder="Tell us about your experience..."
+                        required
+                    ></textarea>
+
+                </div>
+
+
+                <!-- SUBMIT -->
+
+                <button
+                    type="submit"
+                    class="review-submit"
+                >
+                    📩 Send Feedback
+                </button>
+
+            </form>
+
+        </div>
+
+
+        <div class="review-back">
+
+            <a href="{% url 'contact' %}">
+                ← Back to Contact Us
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

@@ -1,0 +1,120 @@
+{% extends 'base.html' %}
+
+{% block title %}AI Report Summary | HealthNest{% endblock %}
+
+{% block content %}
+
+<div class="reports-page">
+
+    <div class="reports-header">
+
+        <span class="dashboard-label">
+            AI HEALTH ASSISTANT
+        </span>
+
+        <h1>
+            Report Summary
+        </h1>
+
+        <p>
+            A simple overview of your uploaded medical report.
+        </p>
+
+    </div>
+
+
+    <div class="report-upload-card">
+
+        <div class="report-icon">
+            📄
+        </div>
+
+        <h2>
+            {{ report.report_name }}
+        </h2>
+
+        <p>
+            {% if report.report_date %}
+                Report date: {{ report.report_date }}
+            {% else %}
+                Report date not provided
+            {% endif %}
+        </p>
+
+        <hr>
+
+
+        <h3>
+            🤖 AI Summary
+        </h3>
+
+       <div class="ai-summary-box">
+
+    <h3>
+        🤖 AI Demo Summary
+    </h3>
+
+    <h4>
+        Overview
+    </h4>
+
+    <p>
+        {{ summary.overview }}
+    </p>
+
+
+    <h4>
+        Key Observations
+    </h4>
+
+    <ul>
+
+        {% for finding in summary.findings %}
+
+            <li>
+                {{ finding }}
+            </li>
+
+        {% endfor %}
+
+    </ul>
+
+
+    <h4>
+        Suggested Next Step
+    </h4>
+
+    <p>
+        {{ summary.advice }}
+    </p>
+
+</div>
+
+
+        <div style="margin-top: 25px;">
+
+            <strong>
+                ⚠️ Important
+            </strong>
+
+            <p>
+                This summary is for informational purposes only and is not
+                a medical diagnosis. Always consult a qualified healthcare
+                professional for medical decisions.
+            </p>
+
+        </div>
+
+
+        <a
+            href="{% url 'report_list' %}"
+            class="report-view-btn"
+        >
+            ← Back to Reports
+        </a>
+
+    </div>
+
+</div>
+
+{% endblock %}

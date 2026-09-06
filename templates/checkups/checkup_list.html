@@ -1,0 +1,208 @@
+{% extends 'base.html' %}
+
+{% block title %}Health Checkups | HealthNest{% endblock %}
+
+{% block content %}
+
+<div class="checkups-page">
+
+    <div class="checkups-header">
+
+        <span class="dashboard-label">
+            HEALTH MONITORING
+        </span>
+
+        <h1>Health Checkups</h1>
+
+        <p>
+            Keep track of your health tests and upcoming checkups
+            in one place.
+        </p>
+
+    </div>
+
+
+    <!-- ADD CHECKUP -->
+
+    <div class="checkup-card">
+
+        <h2>Add Health Checkup</h2>
+
+        <p>
+            Record a completed test and your next recommended checkup date.
+        </p>
+
+        <form method="POST">
+
+            {% csrf_token %}
+
+            <div class="checkup-form-grid">
+
+                <div class="form-field">
+
+                    <label>
+                        Test / Checkup Name
+                    </label>
+
+                    <input
+                        type="text"
+                        name="test_name"
+                        placeholder="e.g. Full Body Health Checkup"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-field">
+
+                    <label>
+                        Test Date
+                    </label>
+
+                    <input
+                        type="date"
+                        name="test_date"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-field">
+
+                    <label>
+                        Next Recommended Date
+                    </label>
+
+                    <input
+                        type="date"
+                        name="next_checkup_date"
+                        required
+                    >
+
+                </div>
+
+            </div>
+
+
+            <div class="form-field">
+
+                <label>
+                    Notes
+                </label>
+
+                <textarea
+                    name="notes"
+                    rows="4"
+                    placeholder="Add any notes about this checkup..."
+                ></textarea>
+
+            </div>
+
+
+            <button
+                type="submit"
+                class="profile-save-btn"
+            >
+                + Add Checkup
+            </button>
+
+        </form>
+
+    </div>
+
+
+    <!-- CHECKUP HISTORY -->
+
+    <div class="checkup-history">
+
+        <div class="section-title">
+
+            <span>
+                CHECKUP HISTORY
+            </span>
+
+            <h2>
+                My Health Tests
+            </h2>
+
+        </div>
+
+
+        {% if checkups %}
+
+            <div class="checkup-list">
+
+                {% for checkup in checkups %}
+
+                    <div class="checkup-item">
+
+                        <div class="checkup-icon">
+                            🩺
+                        </div>
+
+
+                        <div class="checkup-info">
+
+                            <h3>
+                                {{ checkup.test_name }}
+                            </h3>
+
+                            <p>
+                                Completed:
+                                {{ checkup.test_date }}
+                            </p>
+
+                            {% if checkup.notes %}
+                                <small>
+                                    {{ checkup.notes }}
+                                </small>
+                            {% endif %}
+
+                        </div>
+
+
+                        <div class="next-checkup">
+
+                            <span>
+                                NEXT CHECKUP
+                            </span>
+
+                            <strong>
+                                {{ checkup.next_checkup_date }}
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+                {% endfor %}
+
+            </div>
+
+        {% else %}
+
+            <div class="empty-reports">
+
+                <div>
+                    🩺
+                </div>
+
+                <h3>
+                    No checkups recorded
+                </h3>
+
+                <p>
+                    Add your first health checkup above.
+                </p>
+
+            </div>
+
+        {% endif %}
+
+    </div>
+
+</div>
+
+{% endblock %}

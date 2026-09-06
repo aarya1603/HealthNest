@@ -1,0 +1,2042 @@
+{% extends "base.html" %}
+
+{% block title %}
+Safety & Care | HealthNest
+{% endblock %}
+
+
+{% block content %}
+
+<style>
+
+/* =====================================================
+   SAFETY & CARE PAGE
+===================================================== */
+
+.safety-page {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 55px 6% 80px;
+}
+
+
+/* =====================================================
+   HERO
+===================================================== */
+
+.safety-hero {
+    text-align: center;
+    max-width: 850px;
+    margin: 0 auto 55px;
+}
+
+.safety-hero-icon {
+    width: 78px;
+    height: 78px;
+
+    margin: 0 auto 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 20px;
+
+    background: #fff4dc;
+
+    font-size: 42px;
+}
+
+.safety-hero h1 {
+    margin: 0 0 15px;
+
+    font-size: clamp(40px, 5vw, 56px);
+
+    color: #173f46;
+}
+
+.safety-hero p {
+    margin: 0;
+
+    color: #65787d;
+
+    font-size: 18px;
+
+    line-height: 1.7;
+}
+
+
+/* =====================================================
+   GAS TIMER
+===================================================== */
+
+.gas-timer-section {
+    background: white;
+
+    border: 1px solid #e1e9ea;
+
+    border-radius: 24px;
+
+    padding: 40px;
+
+    box-shadow:
+        0 10px 30px rgba(23, 63, 70, 0.07);
+
+    margin-bottom: 60px;
+}
+
+
+.gas-timer-header {
+    text-align: center;
+
+    margin-bottom: 30px;
+}
+
+
+.gas-timer-icon {
+    font-size: 48px;
+
+    margin-bottom: 8px;
+}
+
+
+.gas-timer-header h2 {
+    margin: 0 0 10px;
+
+    font-size: 32px;
+
+    color: #173f46;
+}
+
+
+.gas-timer-header p {
+    margin: 0;
+
+    color: #65787d;
+
+    font-size: 16px;
+}
+
+
+/* =====================================================
+   TIMER DISPLAY
+===================================================== */
+
+.timer-display-wrapper {
+    display: flex;
+
+    justify-content: center;
+
+    margin: 30px 0;
+}
+
+
+.timer-display {
+    width: min(500px, 100%);
+
+    background: #f7fbfb;
+
+    border: 2px solid #dcebed;
+
+    border-radius: 22px;
+
+    padding: 25px;
+
+    text-align: center;
+
+    transition: 0.2s;
+}
+
+
+.timer-display.warning {
+    background: #fff8e8;
+
+    border-color: #e8c86d;
+}
+
+
+.timer-display.finished {
+    background: #fff0f0;
+
+    border-color: #e5a2a2;
+
+    animation: timerPulse 0.8s infinite alternate;
+}
+
+
+@keyframes timerPulse {
+
+    from {
+        transform: scale(1);
+    }
+
+    to {
+        transform: scale(1.02);
+    }
+
+}
+
+
+#timerDisplay {
+    font-size: clamp(58px, 10vw, 90px);
+
+    font-weight: 800;
+
+    letter-spacing: 3px;
+
+    color: #173f46;
+
+    font-variant-numeric: tabular-nums;
+}
+
+
+.timer-display.finished #timerDisplay {
+    color: #c62828;
+}
+
+
+.timer-status {
+    min-height: 25px;
+
+    margin-top: 8px;
+
+    color: #65787d;
+
+    font-size: 15px;
+
+    font-weight: bold;
+}
+
+
+/* =====================================================
+   PRESETS
+===================================================== */
+
+.timer-subtitle {
+    text-align: center;
+
+    margin: 30px 0 15px;
+
+    color: #173f46;
+
+    font-size: 18px;
+
+    font-weight: 800;
+}
+
+
+.preset-buttons {
+    display: flex;
+
+    justify-content: center;
+
+    flex-wrap: wrap;
+
+    gap: 12px;
+}
+
+
+.preset-btn {
+    border: 1px solid #cfe1e3;
+
+    background: #f4fafa;
+
+    color: #176d74;
+
+    padding: 12px 22px;
+
+    border-radius: 11px;
+
+    font-size: 16px;
+
+    font-weight: 800;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+
+.preset-btn:hover {
+    background: #e7f5f6;
+
+    transform: translateY(-2px);
+}
+
+
+.preset-btn.selected {
+    background: #299aa5;
+
+    color: white;
+
+    border-color: #299aa5;
+}
+
+
+/* =====================================================
+   MANUAL INPUT
+===================================================== */
+
+.manual-time {
+    max-width: 500px;
+
+    margin: 30px auto 0;
+}
+
+
+.manual-inputs {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 15px;
+}
+
+
+.time-input-group {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 7px;
+}
+
+
+.time-input-group label {
+    font-size: 15px;
+
+    font-weight: bold;
+
+    color: #52686d;
+}
+
+
+.time-input-group input {
+    width: 100%;
+
+    padding: 14px;
+
+    border: 1px solid #d4e3e5;
+
+    border-radius: 11px;
+
+    background: #fbfefe;
+
+    font-size: 18px;
+
+    text-align: center;
+
+    color: #173f46;
+}
+
+
+.time-input-group input:focus {
+    outline: none;
+
+    border-color: #299aa5;
+}
+
+
+.manual-set-btn {
+    width: 100%;
+
+    margin-top: 14px;
+
+    padding: 13px;
+
+    border: none;
+
+    border-radius: 11px;
+
+    background: #eef7f7;
+
+    color: #176d74;
+
+    font-size: 16px;
+
+    font-weight: 800;
+
+    cursor: pointer;
+}
+
+
+.manual-set-btn:hover {
+    background: #e0f1f2;
+}
+
+
+/* =====================================================
+   TIMER CONTROLS
+===================================================== */
+
+.timer-controls {
+    display: flex;
+
+    justify-content: center;
+
+    flex-wrap: wrap;
+
+    gap: 12px;
+
+    margin-top: 30px;
+}
+
+
+.timer-control-btn {
+    min-width: 125px;
+
+    padding: 14px 22px;
+
+    border: none;
+
+    border-radius: 11px;
+
+    font-size: 17px;
+
+    font-weight: 800;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+
+.start-btn {
+    background: #299a5f;
+
+    color: white;
+}
+
+
+.start-btn:hover {
+    background: #21824e;
+}
+
+
+.pause-btn {
+    background: #e4a52f;
+
+    color: white;
+}
+
+
+.pause-btn:hover {
+    background: #cb9023;
+}
+
+
+.reset-btn {
+    background: #eef2f3;
+
+    color: #52686d;
+
+    border: 1px solid #d5e0e2;
+}
+
+
+.reset-btn:hover {
+    background: #e2e9ea;
+}
+
+
+/* =====================================================
+   SAFETY WARNING
+===================================================== */
+
+.gas-warning {
+    max-width: 850px;
+
+    margin: 30px auto 0;
+
+    padding: 18px 22px;
+
+    background: #fff7e7;
+
+    border: 1px solid #efd58e;
+
+    border-radius: 13px;
+
+    color: #755b18;
+
+    text-align: center;
+
+    font-size: 15px;
+
+    line-height: 1.6;
+}
+
+
+/* =====================================================
+   TIMER ALERT
+===================================================== */
+
+.timer-alert {
+    display: none;
+
+    margin: 25px auto 0;
+
+    max-width: 600px;
+
+    padding: 20px;
+
+    border-radius: 15px;
+
+    background: #fff0f0;
+
+    border: 1px solid #e5b1b1;
+
+    text-align: center;
+
+    color: #b32626;
+}
+
+
+.timer-alert.show {
+    display: block;
+}
+
+
+.timer-alert h3 {
+    margin: 0 0 8px;
+
+    font-size: 22px;
+}
+
+
+.timer-alert p {
+    margin: 0;
+
+    font-size: 16px;
+}
+
+
+/* =====================================================
+   SECTION TITLES
+===================================================== */
+
+.section-heading {
+    text-align: center;
+
+    margin-bottom: 28px;
+}
+
+
+.section-heading h2 {
+    margin: 0 0 10px;
+
+    color: #173f46;
+
+    font-size: 32px;
+}
+
+
+.section-heading p {
+    margin: 0;
+
+    color: #65787d;
+
+    font-size: 17px;
+}
+
+
+/* =====================================================
+   SAFETY CARDS
+===================================================== */
+
+.safety-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 24px;
+}
+
+
+.safety-card {
+    background: white;
+
+    border: 1px solid #dfe9ea;
+
+    border-radius: 20px;
+
+    padding: 30px;
+
+    box-shadow:
+        0 7px 22px rgba(23, 63, 70, 0.05);
+
+    transition: 0.2s;
+}
+
+
+.safety-card:hover {
+    transform: translateY(-4px);
+
+    box-shadow:
+        0 12px 30px rgba(23, 63, 70, 0.08);
+}
+
+
+.safety-icon {
+    width: 60px;
+    height: 60px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 16px;
+
+    background: #eaf7f8;
+
+    font-size: 30px;
+
+    margin-bottom: 18px;
+}
+
+
+.safety-card h3 {
+    margin: 0 0 10px;
+
+    font-size: 23px;
+
+    color: #173f46;
+}
+
+
+.safety-card > p {
+    margin: 0 0 18px;
+
+    color: #687b80;
+
+    line-height: 1.6;
+
+    font-size: 16px;
+}
+
+
+/* =====================================================
+   CHECKLIST
+===================================================== */
+
+.checklist {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 10px;
+}
+
+
+.check-item {
+    display: flex;
+
+    align-items: center;
+
+    gap: 11px;
+
+    color: #536a6f;
+
+    line-height: 1.4;
+
+    cursor: pointer;
+}
+
+
+.check-item input {
+    width: 19px;
+    height: 19px;
+
+    accent-color: #299aa5;
+
+    flex-shrink: 0;
+}
+
+
+/* =====================================================
+   QUICK ACTIONS
+===================================================== */
+
+.quick-section {
+    margin-top: 60px;
+}
+
+
+.quick-actions {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 18px;
+}
+
+
+.action-button {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 15px 20px;
+
+    border-radius: 11px;
+
+    background: #299aa5;
+
+    color: white;
+
+    font-size: 16px;
+
+    font-weight: 800;
+
+    transition: 0.2s;
+}
+
+
+.action-button:hover {
+    background: #207f88;
+
+    transform: translateY(-2px);
+}
+
+
+.action-button.secondary {
+    background: #eef7f7;
+
+    color: #176d74;
+}
+
+
+.action-button.secondary:hover {
+    background: #e0f1f2;
+}
+
+
+/* =====================================================
+   EMERGENCY PREPARATION
+===================================================== */
+
+.preparedness {
+    margin-top: 50px;
+
+    padding: 30px;
+
+    background: #fff3f1;
+
+    border: 1px solid #efd5d1;
+
+    border-radius: 20px;
+}
+
+
+.preparedness h2 {
+    margin: 0 0 12px;
+
+    color: #7b3030;
+
+    font-size: 27px;
+}
+
+
+.preparedness p {
+    margin: 0 0 20px;
+
+    color: #725f5f;
+
+    line-height: 1.6;
+}
+
+
+.preparedness .action-button {
+    display: inline-flex;
+
+    width: auto;
+}
+
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media (max-width: 800px) {
+
+    .safety-page {
+        padding:
+            40px 20px 60px;
+    }
+
+
+    .gas-timer-section {
+        padding: 25px 18px;
+    }
+
+
+    .safety-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    .quick-actions {
+        grid-template-columns: 1fr;
+    }
+
+
+    .manual-inputs {
+        grid-template-columns: 1fr;
+    }
+
+
+    .timer-control-btn {
+        width: 100%;
+    }
+
+}
+
+</style>
+
+
+
+<!-- =====================================================
+     SAFETY PAGE
+===================================================== -->
+
+<section class="safety-page">
+
+
+    <!-- =================================================
+         HERO
+    ================================================= -->
+
+    <div class="safety-hero">
+
+        <div class="safety-hero-icon">
+            🛡️
+        </div>
+
+        <h1>
+            Safety & Care
+        </h1>
+
+        <p>
+            Simple tools and reminders to help you
+            stay safe, comfortable and independent
+            in your everyday life.
+        </p>
+
+    </div>
+
+
+
+    <!-- =================================================
+         GAS SAFETY TIMER
+    ================================================= -->
+
+    <section class="gas-timer-section">
+
+
+        <div class="gas-timer-header">
+
+            <div class="gas-timer-icon">
+                🔥
+            </div>
+
+            <h2>
+                Gas Safety Timer
+            </h2>
+
+            <p>
+                Set a timer whenever you need to remember
+                to check the stove or gas.
+            </p>
+
+        </div>
+
+
+
+        <!-- TIMER DISPLAY -->
+
+        <div class="timer-display-wrapper">
+
+            <div
+                class="timer-display"
+                id="timerBox"
+            >
+
+                <div id="timerDisplay">
+                    00:00
+                </div>
+
+                <div
+                    class="timer-status"
+                    id="timerStatus"
+                >
+                    Set a time to begin.
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- PRESET TIMES -->
+
+        <div class="timer-subtitle">
+            Quick Timer
+        </div>
+
+
+        <div class="preset-buttons">
+
+            <button
+                type="button"
+                class="preset-btn"
+                onclick="setPreset(5)"
+            >
+                5 min
+            </button>
+
+            <button
+                type="button"
+                class="preset-btn"
+                onclick="setPreset(10)"
+            >
+                10 min
+            </button>
+
+            <button
+                type="button"
+                class="preset-btn"
+                onclick="setPreset(15)"
+            >
+                15 min
+            </button>
+
+            <button
+                type="button"
+                class="preset-btn"
+                onclick="setPreset(30)"
+            >
+                30 min
+            </button>
+
+        </div>
+
+
+
+        <!-- MANUAL TIME -->
+
+        <div class="timer-subtitle">
+            Set Time Manually
+        </div>
+
+
+        <div class="manual-time">
+
+            <div class="manual-inputs">
+
+
+                <div class="time-input-group">
+
+                    <label for="manualMinutes">
+                        Minutes
+                    </label>
+
+                    <input
+                        type="number"
+                        id="manualMinutes"
+                        min="0"
+                        max="999"
+                        value="0"
+                        placeholder="Minutes"
+                    >
+
+                </div>
+
+
+                <div class="time-input-group">
+
+                    <label for="manualSeconds">
+                        Seconds
+                    </label>
+
+                    <input
+                        type="number"
+                        id="manualSeconds"
+                        min="0"
+                        max="59"
+                        value="0"
+                        placeholder="Seconds"
+                    >
+
+                </div>
+
+            </div>
+
+
+            <button
+                type="button"
+                class="manual-set-btn"
+                onclick="setManualTime()"
+            >
+                ✏️ Set Manual Time
+            </button>
+
+        </div>
+
+
+
+        <!-- CONTROLS -->
+
+        <div class="timer-controls">
+
+            <button
+                type="button"
+                class="timer-control-btn start-btn"
+                onclick="startTimer()"
+            >
+                ▶ Start
+            </button>
+
+
+            <button
+                type="button"
+                class="timer-control-btn pause-btn"
+                onclick="pauseTimer()"
+            >
+                ⏸ Pause
+            </button>
+
+
+            <button
+                type="button"
+                class="timer-control-btn reset-btn"
+                onclick="resetTimer()"
+            >
+                🔄 Reset
+            </button>
+
+        </div>
+
+
+
+        <!-- ALERT -->
+
+        <div
+            class="timer-alert"
+            id="timerAlert"
+        >
+
+            <h3>
+                🔔 Timer Finished!
+            </h3>
+
+            <p>
+                Please check your stove or gas now.
+            </p>
+
+        </div>
+
+
+
+        <!-- SAFETY WARNING -->
+
+        <div class="gas-warning">
+
+            ⚠️
+            <strong>Safety reminder:</strong>
+            A timer is only a reminder. Never leave
+            cooking unattended, and always make sure
+            the gas or stove is safely turned off
+            when you are finished.
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- =================================================
+         EVERYDAY SAFETY
+    ================================================= -->
+
+    <div class="section-heading">
+
+        <h2>
+            Everyday Safety
+        </h2>
+
+        <p>
+            Helpful checks and reminders for daily living.
+        </p>
+
+    </div>
+
+
+    <section class="safety-grid">
+
+
+        <!-- HOME SAFETY -->
+
+        <div class="safety-card">
+
+            <div class="safety-icon">
+                🏠
+            </div>
+
+            <h3>
+                Home Safety Checklist
+            </h3>
+
+            <p>
+                Quickly check common areas of your home
+                and make sure important safety precautions
+                have been considered.
+            </p>
+
+
+            <div class="checklist">
+
+                <label class="check-item">
+
+                    <input type="checkbox">
+
+                    Floors and walkways are clear
+
+                </label>
+
+
+                <label class="check-item">
+
+                    <input type="checkbox">
+
+                    Frequently used areas are well lit
+
+                </label>
+
+
+                <label class="check-item">
+
+                    <input type="checkbox">
+
+                    Important items are easy to reach
+
+                </label>
+
+
+                <label class="check-item">
+
+                    <input type="checkbox">
+
+                    Emergency numbers are available
+
+                </label>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- DAILY CARE -->
+
+        <div class="safety-card">
+
+            <div class="safety-icon">
+                ⏰
+            </div>
+
+            <h3>
+                Daily Care Reminders
+            </h3>
+
+            <p>
+                Keep track of simple daily routines
+                and important activities.
+            </p>
+
+
+            <div class="checklist">
+
+                <label class="check-item">
+
+                    <input type="checkbox">
+
+                    Morning routine completed
+
+                </label>
+
+
+                <label class="check-item">
+
+                    <input type="checkbox">
+
+                    Water reminder
+
+                </label>
+
+
+                <label class="check-item">
+
+                    <input type="checkbox">
+
+                    Meal reminder
+
+                </label>
+
+
+                <label class="check-item">
+
+                    <input type="checkbox">
+
+                    Evening routine completed
+
+                </label>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- MOBILITY -->
+
+        <div class="safety-card">
+
+            <div class="safety-icon">
+                🚶
+            </div>
+
+            <h3>
+                Mobility & Fall Safety
+            </h3>
+
+            <p>
+                Simple reminders for creating a safer
+                environment while moving around the home.
+            </p>
+
+
+            <div class="checklist">
+
+                <label class="check-item">
+
+                    <input type="checkbox">
+
+                    Keep walkways unobstructed
+
+                </label>
+
+
+                <label class="check-item">
+
+                    <input type="checkbox">
+
+                    Keep frequently used items nearby
+
+                </label>
+
+
+                <label class="check-item">
+
+                    <input type="checkbox">
+
+                    Use available support when needed
+
+                </label>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- PERSONAL SAFETY -->
+
+        <div class="safety-card">
+
+            <div class="safety-icon">
+                🛡️
+            </div>
+
+            <h3>
+                Personal Safety
+            </h3>
+
+            <p>
+                Keep important information and safety
+                resources easy to access.
+            </p>
+
+
+            <div class="checklist">
+
+                <label class="check-item">
+
+                    <input type="checkbox">
+
+                    Emergency contacts are saved
+
+                </label>
+
+
+                <label class="check-item">
+
+                    <input type="checkbox">
+
+                    Important information is accessible
+
+                </label>
+
+
+                <label class="check-item">
+
+                    <input type="checkbox">
+
+                    Phone is charged
+
+                </label>
+
+            </div>
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- =================================================
+         QUICK ACCESS
+    ================================================= -->
+
+    <section class="quick-section">
+
+
+        <div class="section-heading">
+
+            <h2>
+                Quick Access
+            </h2>
+
+            <p>
+                Get to important HealthNest features quickly.
+            </p>
+
+        </div>
+
+
+        <div class="quick-actions">
+
+
+            <a
+                href="/emergency/"
+                class="action-button"
+            >
+                🚨 Emergency Help
+            </a>
+
+
+            <a
+                href="/medicines/"
+                class="action-button secondary"
+            >
+                💊 Medicine Reminders
+            </a>
+
+
+            <a
+                href="/"
+                class="action-button secondary"
+            >
+                🏠 Back to Home
+            </a>
+
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- =================================================
+         EMERGENCY PREPAREDNESS
+    ================================================= -->
+
+    <section class="preparedness">
+
+        <h2>
+            🆘 Be Prepared
+        </h2>
+
+        <p>
+            Keep your emergency contacts updated and
+            make sure important emergency information
+            is easy to access. If an urgent situation
+            occurs, use the HealthNest Emergency section
+            to access emergency services and your
+            saved contacts.
+        </p>
+
+
+        <a
+            href="/emergency/"
+            class="action-button"
+        >
+            Open Emergency Support →
+        </a>
+
+    </section>
+
+
+</section>
+
+
+
+<script>
+
+/* =====================================================
+   GAS SAFETY TIMER
+===================================================== */
+
+
+/* -----------------------------
+   TIMER VARIABLES
+----------------------------- */
+
+let timerInterval = null;
+
+let remainingSeconds = 0;
+
+let originalSeconds = 0;
+
+let timerRunning = false;
+
+
+/* -----------------------------
+   ELEMENTS
+----------------------------- */
+
+const timerDisplay =
+    document.getElementById("timerDisplay");
+
+const timerStatus =
+    document.getElementById("timerStatus");
+
+const timerBox =
+    document.getElementById("timerBox");
+
+const timerAlert =
+    document.getElementById("timerAlert");
+
+const manualMinutes =
+    document.getElementById("manualMinutes");
+
+const manualSeconds =
+    document.getElementById("manualSeconds");
+
+
+/* -----------------------------
+   FORMAT TIME
+----------------------------- */
+
+function formatTime(totalSeconds) {
+
+    const minutes =
+        Math.floor(totalSeconds / 60);
+
+    const seconds =
+        totalSeconds % 60;
+
+
+    return (
+        String(minutes).padStart(2, "0")
+        +
+        ":"
+        +
+        String(seconds).padStart(2, "0")
+    );
+
+}
+
+
+/* -----------------------------
+   UPDATE DISPLAY
+----------------------------- */
+
+function updateDisplay() {
+
+    timerDisplay.textContent =
+        formatTime(remainingSeconds);
+
+
+    if (
+        remainingSeconds > 0 &&
+        remainingSeconds <= 60
+    ) {
+
+        timerBox.classList.add("warning");
+
+    }
+
+    else {
+
+        timerBox.classList.remove("warning");
+
+    }
+
+}
+
+
+/* -----------------------------
+   SET PRESET
+----------------------------- */
+
+function setPreset(minutes) {
+
+    stopTimer();
+
+    remainingSeconds =
+        minutes * 60;
+
+    originalSeconds =
+        remainingSeconds;
+
+
+    manualMinutes.value =
+        minutes;
+
+    manualSeconds.value =
+        0;
+
+
+    timerAlert.classList.remove("show");
+
+    timerBox.classList.remove("finished");
+
+
+    timerStatus.textContent =
+        `${minutes} minute timer is ready.`;
+
+
+    updateDisplay();
+
+
+    clearPresetSelection();
+
+
+    /*
+     * Highlight selected preset.
+     */
+
+    const buttons =
+        document.querySelectorAll(".preset-btn");
+
+
+    buttons.forEach(function(button) {
+
+        if (
+            button.textContent.trim()
+            === `${minutes} min`
+        ) {
+
+            button.classList.add("selected");
+
+        }
+
+    });
+
+}
+
+
+/* -----------------------------
+   MANUAL TIME
+----------------------------- */
+
+function setManualTime() {
+
+    stopTimer();
+
+    let minutes =
+        parseInt(manualMinutes.value) || 0;
+
+    let seconds =
+        parseInt(manualSeconds.value) || 0;
+
+
+    if (minutes < 0) {
+        minutes = 0;
+    }
+
+
+    if (seconds < 0) {
+        seconds = 0;
+    }
+
+
+    /*
+     * Convert extra seconds into minutes.
+     */
+
+    if (seconds >= 60) {
+
+        minutes +=
+            Math.floor(seconds / 60);
+
+        seconds =
+            seconds % 60;
+
+    }
+
+
+    if (
+        minutes === 0 &&
+        seconds === 0
+    ) {
+
+        timerStatus.textContent =
+            "Please enter a time greater than zero.";
+
+        return;
+
+    }
+
+
+    manualMinutes.value =
+        minutes;
+
+    manualSeconds.value =
+        seconds;
+
+
+    remainingSeconds =
+        (minutes * 60) + seconds;
+
+    originalSeconds =
+        remainingSeconds;
+
+
+    timerAlert.classList.remove("show");
+
+    timerBox.classList.remove("finished");
+
+
+    clearPresetSelection();
+
+
+    timerStatus.textContent =
+        "Manual timer is ready.";
+
+
+    updateDisplay();
+
+}
+
+
+/* -----------------------------
+   START TIMER
+----------------------------- */
+
+function startTimer() {
+
+    /*
+     * Don't start another interval
+     * if timer is already running.
+     */
+
+    if (timerRunning) {
+        return;
+    }
+
+
+    /*
+     * If no time has been set,
+     * try to use manual input.
+     */
+
+    if (remainingSeconds <= 0) {
+
+        setManualTime();
+
+    }
+
+
+    if (remainingSeconds <= 0) {
+
+        return;
+
+    }
+
+
+    timerRunning = true;
+
+
+    timerAlert.classList.remove("show");
+
+    timerBox.classList.remove("finished");
+
+
+    timerStatus.textContent =
+        "Timer is running. Please remember to check the stove.";
+
+
+    timerInterval =
+        setInterval(function() {
+
+            remainingSeconds--;
+
+            updateDisplay();
+
+
+            if (remainingSeconds <= 0) {
+
+                finishTimer();
+
+            }
+
+        }, 1000);
+
+}
+
+
+/* -----------------------------
+   PAUSE TIMER
+----------------------------- */
+
+function pauseTimer() {
+
+    if (!timerRunning) {
+
+        timerStatus.textContent =
+            "Timer is already paused.";
+
+        return;
+
+    }
+
+
+    clearInterval(timerInterval);
+
+    timerInterval = null;
+
+    timerRunning = false;
+
+
+    timerStatus.textContent =
+        "Timer paused.";
+
+}
+
+
+/* -----------------------------
+   STOP TIMER
+----------------------------- */
+
+function stopTimer() {
+
+    clearInterval(timerInterval);
+
+    timerInterval = null;
+
+    timerRunning = false;
+
+}
+
+
+/* -----------------------------
+   RESET TIMER
+----------------------------- */
+
+function resetTimer() {
+
+    stopTimer();
+
+
+    remainingSeconds =
+        originalSeconds;
+
+
+    timerAlert.classList.remove("show");
+
+    timerBox.classList.remove("finished");
+
+    timerBox.classList.remove("warning");
+
+
+    if (originalSeconds > 0) {
+
+        timerStatus.textContent =
+            "Timer reset. Ready to start again.";
+
+    }
+
+    else {
+
+        timerStatus.textContent =
+            "Set a time to begin.";
+
+    }
+
+
+    updateDisplay();
+
+}
+
+
+/* -----------------------------
+   FINISH TIMER
+----------------------------- */
+
+function finishTimer() {
+
+    stopTimer();
+
+
+    remainingSeconds = 0;
+
+
+    updateDisplay();
+
+
+    timerBox.classList.remove("warning");
+
+    timerBox.classList.add("finished");
+
+
+    timerAlert.classList.add("show");
+
+
+    timerStatus.textContent =
+        "Time is up. Please check the stove or gas.";
+
+
+    /*
+     * Try to play an alert sound.
+     */
+
+    playAlertSound();
+
+
+    /*
+     * Browser notification if permission
+     * has already been granted.
+     */
+
+    if (
+        "Notification" in window &&
+        Notification.permission === "granted"
+    ) {
+
+        new Notification(
+            "🔥 Gas Safety Timer Finished",
+            {
+                body:
+                    "Please check your stove or gas."
+            }
+        );
+
+    }
+
+}
+
+
+/* -----------------------------
+   ALERT SOUND
+----------------------------- */
+function playAlertSound() {
+
+    try {
+
+        const AudioContext =
+            window.AudioContext ||
+            window.webkitAudioContext;
+
+        if (!AudioContext) {
+            return;
+        }
+
+        const audioContext =
+            new AudioContext();
+
+        /*
+         * Beep repeatedly for 5 seconds
+         */
+
+        let startTime =
+            audioContext.currentTime;
+
+        let endTime =
+            startTime + 5;
+
+        function makeBeep(time) {
+
+            const oscillator =
+                audioContext.createOscillator();
+
+            const gainNode =
+                audioContext.createGain();
+
+            oscillator.connect(gainNode);
+
+            gainNode.connect(
+                audioContext.destination
+            );
+
+            oscillator.type = "square";
+
+            oscillator.frequency.value = 880;
+
+            /*
+             * Beep starts
+             */
+
+            gainNode.gain.setValueAtTime(
+                0.3,
+                time
+            );
+
+            /*
+             * Beep ends after 0.25 seconds
+             */
+
+            gainNode.gain.setValueAtTime(
+                0.0001,
+                time + 0.25
+            );
+
+            oscillator.start(time);
+
+            oscillator.stop(time + 0.25);
+
+        }
+
+
+        /*
+         * Create a beep every 0.5 seconds
+         * for exactly 5 seconds
+         */
+
+        for (
+            let time = startTime;
+            time < endTime;
+            time += 0.5
+        ) {
+
+            makeBeep(time);
+
+        }
+
+
+        /*
+         * Close audio after 5 seconds
+         */
+
+        setTimeout(function () {
+
+            audioContext.close();
+
+        }, 5000);
+
+    }
+
+    catch (error) {
+
+        console.log(
+            "Alert sound could not be played.",
+            error
+        );
+
+    }
+
+}
+
+/* -----------------------------
+   CLEAR PRESET SELECTION
+----------------------------- */
+
+function clearPresetSelection() {
+
+    const buttons =
+        document.querySelectorAll(".preset-btn");
+
+
+    buttons.forEach(function(button) {
+
+        button.classList.remove("selected");
+
+    });
+
+}
+
+
+/* -----------------------------
+   INITIAL DISPLAY
+----------------------------- */
+
+updateDisplay();
+
+
+/* -----------------------------
+   NOTIFICATION PERMISSION
+----------------------------- */
+
+if (
+    "Notification" in window &&
+    Notification.permission === "default"
+) {
+
+    /*
+     * We don't automatically ask for
+     * permission when the page loads.
+     *
+     * The browser will only allow
+     * notifications after user interaction.
+     */
+
+}
+
+
+/* =====================================================
+   KEYBOARD SUPPORT
+===================================================== */
+
+document.addEventListener(
+    "keydown",
+    function(event) {
+
+        /*
+         * Spacebar starts/pauses timer.
+         */
+
+        if (
+            event.code === "Space" &&
+            document.activeElement.tagName !== "INPUT"
+        ) {
+
+            event.preventDefault();
+
+
+            if (timerRunning) {
+
+                pauseTimer();
+
+            }
+
+            else {
+
+                startTimer();
+
+            }
+
+        }
+
+    }
+);
+
+</script>
+
+{% endblock %}

@@ -1,0 +1,505 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Number Guessing Game | HealthNest
+{% endblock %}
+
+
+{% block content %}
+
+<style>
+
+/* =====================================================
+   HEALTHNEST NUMBER GUESSING GAME
+   ===================================================== */
+
+
+/* ================= PAGE ================= */
+
+.number-game-page {
+
+    min-height: 650px;
+
+    background: #f4faf9;
+
+    padding: 60px 20px 80px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: flex-start;
+
+    box-sizing: border-box;
+}
+
+
+/* ================= GAME CARD ================= */
+
+.number-game-card {
+
+    width: min(700px, 100%);
+
+    background: #ffffff;
+
+    border: 1px solid #e1eeee;
+
+    border-radius: 24px;
+
+    padding: 45px 40px;
+
+    text-align: center;
+
+    box-shadow:
+        0 10px 35px rgba(30, 60, 65, 0.08);
+
+    box-sizing: border-box;
+}
+
+
+/* ================= TITLE ================= */
+
+.number-game-card h1 {
+
+    margin: 0 0 18px;
+
+    color: #173f46;
+
+    font-size: clamp(32px, 5vw, 46px);
+
+    line-height: 1.2;
+
+}
+
+
+/* ================= DESCRIPTION ================= */
+
+.number-game-card p {
+
+    margin: 10px 0;
+
+    color: #657679;
+
+    font-size: 18px;
+
+    line-height: 1.6;
+}
+
+
+/* ================= ATTEMPTS ================= */
+
+.attempt-text {
+
+    margin-bottom: 28px !important;
+
+}
+
+
+/* ================= INPUT ================= */
+
+#guessInput {
+
+    display: block;
+
+    width: 180px;
+
+    height: 52px;
+
+    margin: 0 auto 18px;
+
+    padding: 8px 14px;
+
+    box-sizing: border-box;
+
+    border: 2px solid #d8e8e7;
+
+    border-radius: 11px;
+
+    background: #ffffff;
+
+    color: #173f46;
+
+    font-size: 18px;
+
+    text-align: center;
+
+    outline: none;
+}
+
+
+#guessInput:focus {
+
+    border-color: #168c91;
+
+    box-shadow:
+        0 0 0 3px rgba(22, 140, 145, 0.10);
+}
+
+
+/* ================= GUESS BUTTON ================= */
+
+.guess-btn {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    min-width: 150px;
+
+    height: 48px;
+
+    padding: 0 24px;
+
+    border: none;
+
+    border-radius: 11px;
+
+    background: #168c91;
+
+    color: #ffffff;
+
+    font-size: 17px;
+
+    font-weight: 800;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+.guess-btn:hover {
+
+    background: #126f73;
+
+    transform: translateY(-2px);
+}
+
+
+/* ================= MESSAGE ================= */
+
+#message {
+
+    min-height: 24px;
+
+    margin: 25px auto 0;
+
+    padding: 16px 20px;
+
+    max-width: 560px;
+
+    box-sizing: border-box;
+
+    border-radius: 14px;
+
+    background: #eaf6f5;
+
+    color: #173f46;
+
+    font-size: 17px;
+
+    font-weight: 700;
+
+    line-height: 1.5;
+}
+
+
+/* ================= BACK BUTTON ================= */
+
+.number-back-btn {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    min-width: 180px;
+
+    height: 46px;
+
+    margin-top: 30px;
+
+    padding: 0 22px;
+
+    box-sizing: border-box;
+
+    border: 2px solid #168c91;
+
+    border-radius: 11px;
+
+    background: #ffffff;
+
+    color: #168c91;
+
+    text-decoration: none;
+
+    font-size: 16px;
+
+    font-weight: 800;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+.number-back-btn:hover {
+
+    background: #eaf6f5;
+
+    transform: translateY(-2px);
+}
+
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 700px) {
+
+    .number-game-page {
+
+        padding:
+            35px
+            15px
+            60px;
+
+    }
+
+
+    .number-game-card {
+
+        padding:
+            35px
+            20px;
+
+        border-radius: 20px;
+
+    }
+
+
+    .number-game-card h1 {
+
+        font-size: 32px;
+
+    }
+
+
+    .number-game-card p {
+
+        font-size: 16px;
+
+    }
+
+
+    #guessInput {
+
+        width: 160px;
+
+    }
+
+}
+
+</style>
+
+
+
+<!-- =====================================================
+     NUMBER GUESSING GAME
+     ===================================================== -->
+
+<section class="number-game-page">
+
+    <div class="number-game-card">
+
+
+        <!-- TITLE -->
+
+        <h1>
+            🎯 Number Guessing Game
+        </h1>
+
+
+        <!-- INSTRUCTIONS -->
+
+        <p>
+            Guess a number between
+            <b>1</b>
+            and
+            <b>50</b>
+        </p>
+
+
+        <p class="attempt-text">
+            You have
+            <b>5 attempts</b>
+        </p>
+
+
+        <!-- INPUT -->
+
+        <input
+            type="number"
+            id="guessInput"
+            min="1"
+            max="50"
+            placeholder="Enter number"
+        >
+
+
+        <!-- GUESS BUTTON -->
+
+        <button
+            type="button"
+            class="guess-btn"
+            onclick="makeGuess()">
+
+            Guess
+
+        </button>
+
+
+        <!-- RESULT -->
+
+        <div id="message"></div>
+
+
+        <!-- BACK TO GAMES -->
+
+        <a
+            href="{% url 'games' %}"
+            class="number-back-btn">
+
+            ← Back to Games
+
+        </a>
+
+
+    </div>
+
+</section>
+
+
+
+<script>
+
+/* =====================================================
+   NUMBER GUESSING GAME LOGIC
+   ===================================================== */
+
+const lowerBound = 1;
+
+const upperBound = 50;
+
+const maxAttempts = 5;
+
+
+let secretNumber =
+    Math.floor(
+        Math.random() *
+        (upperBound - lowerBound + 1)
+    ) + lowerBound;
+
+
+let attempts = 0;
+
+let gameOver = false;
+
+
+
+function makeGuess() {
+
+    if (gameOver) {
+        return;
+    }
+
+
+    const input =
+        document.getElementById("guessInput");
+
+
+    const guess =
+        Number(input.value);
+
+
+    const message =
+        document.getElementById("message");
+
+
+    /* ================= VALIDATION ================= */
+
+    if (
+        !guess ||
+        guess < lowerBound ||
+        guess > upperBound
+    ) {
+
+        message.textContent =
+            "❌ Please enter a number between 1 and 50.";
+
+        return;
+    }
+
+
+    /* ================= ATTEMPT ================= */
+
+    attempts++;
+
+
+    /* ================= CORRECT ================= */
+
+    if (guess === secretNumber) {
+
+        message.textContent =
+            `🎉 Correct! You guessed the number ${secretNumber} in ${attempts} attempts.`;
+
+        gameOver = true;
+
+    }
+
+
+    /* ================= GAME OVER ================= */
+
+    else if (attempts >= maxAttempts) {
+
+        message.textContent =
+            `😞 Game Over! The secret number was ${secretNumber}.`;
+
+        gameOver = true;
+
+    }
+
+
+    /* ================= TOO LOW ================= */
+
+    else if (guess < secretNumber) {
+
+        message.textContent =
+            "⬇️ Too low! Try again.";
+
+    }
+
+
+    /* ================= TOO HIGH ================= */
+
+    else {
+
+        message.textContent =
+            "⬆️ Too high! Try again.";
+
+    }
+
+
+    /* ================= CLEAR INPUT ================= */
+
+    input.value = "";
+
+}
+
+</script>
+
+
+{% endblock %}

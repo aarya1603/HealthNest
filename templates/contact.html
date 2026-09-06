@@ -1,0 +1,342 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+Contact Us | HealthNest
+{% endblock %}
+
+{% block content %}
+
+<section class="contact-page">
+
+    <!-- ================================================= -->
+    <!-- HERO -->
+    <!-- ================================================= -->
+
+   <!-- =====================================================
+     CONTACT HERO
+===================================================== -->
+
+<section class="contact-hero">
+
+    <div class="contact-hero-content">
+
+        <div class="contact-hero-label">
+            💙 HEALTHNEST SUPPORT
+        </div>
+
+        <h1>
+            We're Here to Help
+        </h1>
+
+        <p>
+            Have a question, suggestion, or need assistance?
+            Reach out to the HealthNest team.
+        </p>
+
+    </div>
+
+</section>
+    <!-- ================================================= -->
+    <!-- CONTACT SECTION -->
+    <!-- ================================================= -->
+
+    <section class="contact-section">
+
+        <div class="contact-container">
+
+
+            <!-- ================================================= -->
+            <!-- LEFT SIDE -->
+            <!-- ================================================= -->
+
+            <div class="contact-info">
+
+                <span class="section-label">
+                    CONTACT HEALTHNEST
+                </span>
+
+                <h2>
+                    Let's connect.
+                </h2>
+
+                <p class="contact-description">
+
+                    Whether you need help using HealthNest,
+                    want to share feedback, or have a
+                    suggestion, we're always happy to hear
+                    from you.
+
+                </p>
+
+
+                <!-- EMAIL CARD -->
+
+                <div class="info-card">
+
+                    <div class="info-icon">
+                        ✉️
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Email Us
+                        </h3>
+
+                        <p>
+                            Send us your questions or feedback.
+                        </p>
+
+                        <a
+                            href="mailto:care360.c@gmail.com?subject=HealthNest%20Support"
+                            class="email-link"
+                        >
+                            care360.c@gmail.com
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <!-- SUPPORT CARD -->
+
+                <div class="info-card">
+
+                    <div class="info-icon">
+                        💙
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            HealthNest Support
+                        </h3>
+
+                        <p>
+                            We're committed to making HealthNest
+                            simple, safe and supportive.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- RESPONSE CARD -->
+
+                <div class="info-card">
+
+                    <div class="info-icon">
+                        🕐
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            We're Listening
+                        </h3>
+
+                        <p>
+                            Your feedback helps us improve
+                            HealthNest for everyone.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================================================= -->
+            <!-- RIGHT SIDE - CONTACT FORM -->
+            <!-- ================================================= -->
+
+            <div class="contact-form-card">
+
+                <h2>
+                    Send us a message
+                </h2>
+
+                <p class="form-intro">
+                    Fill in the details below and we'll get
+                    back to you.
+                </p>
+
+
+                <form
+                    method="POST"
+                    action="{% url 'contact' %}"
+                >
+
+                    {% csrf_token %}
+
+                    <!-- Tell Django this is the contact form -->
+
+                    <input
+                        type="hidden"
+                        name="form_type"
+                        value="contact"
+                    >
+
+
+                    <!-- NAME -->
+
+                    <div class="form-group">
+
+                        <label for="contact-name">
+                            Full Name
+                        </label>
+
+                        <input
+                            type="text"
+                            id="contact-name"
+                            name="name"
+                            placeholder="Enter your name"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- EMAIL -->
+
+                    <div class="form-group">
+
+                        <label for="contact-email">
+                            Email Address
+                        </label>
+
+                        <input
+                            type="email"
+                            id="contact-email"
+                            name="email"
+                            placeholder="Enter your email"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- SUBJECT -->
+
+                    <div class="form-group">
+
+                        <label for="subject">
+                            Subject
+                        </label>
+
+                        <input
+                            type="text"
+                            id="subject"
+                            name="subject"
+                            placeholder="What is this about?"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- MESSAGE -->
+
+                    <div class="form-group">
+
+                        <label for="message">
+                            Message
+                        </label>
+
+                        <textarea
+                            id="message"
+                            name="message"
+                            rows="6"
+                            placeholder="How can we help?"
+                            required
+                        ></textarea>
+
+                    </div>
+
+
+                    <!-- SUBMIT -->
+
+                    <button
+                        type="submit"
+                        class="contact-submit"
+                    >
+                        Send Message →
+                    </button>
+
+                </form>
+
+
+                <p class="privacy-note">
+
+                    🔒 Your message will be sent to the
+                    HealthNest support email.
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================================================= -->
+    <!-- REVIEW SECTION -->
+    <!-- ================================================= -->
+
+    <section class="review-section">
+
+        <div class="review-card">
+
+            <!-- SUCCESS MESSAGE -->
+
+            {% if success %}
+
+                <div class="success-message">
+
+                    ✅ Thank you for your feedback!
+
+                    <br>
+
+                    Your review has been sent successfully.
+
+                </div>
+
+            {% endif %}
+
+
+    <span class="section-label">
+        💙 SHARE YOUR EXPERIENCE
+    </span>
+
+    <h2>
+        We'd love to hear from you.
+    </h2>
+
+    <p>
+        Tell us how HealthNest has been for you
+        and help us make it better.
+    </p>
+
+    <a
+        href="{% url 'review' %}"
+        class="review-cta-button"
+    >
+        ⭐ Leave a Review →
+    </a>
+
+</div>
+
+            </form>
+
+        </div>
+
+    </section>
+
+</section>
+
+{% endblock %}

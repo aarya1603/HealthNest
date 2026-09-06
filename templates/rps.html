@@ -1,0 +1,437 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Rock Paper Scissors | HealthNest
+{% endblock %}
+
+
+{% block content %}
+
+<style>
+
+/* =====================================================
+   HEALTHNEST ROCK PAPER SCISSORS
+   ===================================================== */
+
+
+/* ================= PAGE ================= */
+
+.rps-page {
+
+    min-height: 650px;
+
+    background: #f4faf9;
+
+    padding: 60px 20px 80px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: flex-start;
+
+    box-sizing: border-box;
+}
+
+
+/* ================= GAME CARD ================= */
+
+.rps-card {
+
+    width: min(800px, 100%);
+
+    background: #ffffff;
+
+    border: 1px solid #e1eeee;
+
+    border-radius: 24px;
+
+    padding: 50px 40px;
+
+    text-align: center;
+
+    box-shadow:
+        0 10px 35px rgba(30, 60, 65, 0.08);
+
+    box-sizing: border-box;
+}
+
+
+/* ================= TITLE ================= */
+
+.rps-card h1 {
+
+    margin: 0 0 18px;
+
+    color: #173f46;
+
+    font-size: clamp(32px, 5vw, 46px);
+
+    line-height: 1.2;
+}
+
+
+/* ================= DESCRIPTION ================= */
+
+.rps-card p {
+
+    margin: 0 0 28px;
+
+    color: #657679;
+
+    font-size: 18px;
+
+    line-height: 1.6;
+}
+
+
+/* ================= CHOICE BUTTONS ================= */
+
+.rps-buttons {
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 16px;
+
+    flex-wrap: wrap;
+
+    margin-bottom: 28px;
+}
+
+
+.rps-btn {
+
+    min-width: 160px;
+
+    height: 50px;
+
+    padding: 0 22px;
+
+    border: none;
+
+    border-radius: 11px;
+
+    background: #168c91;
+
+    color: #ffffff;
+
+    font-size: 17px;
+
+    font-weight: 800;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease;
+
+    box-sizing: border-box;
+}
+
+
+.rps-btn:hover {
+
+    background: #126f73;
+
+    transform: translateY(-2px);
+}
+
+
+/* ================= RESULT ================= */
+
+#result {
+
+    min-height: 25px;
+
+    max-width: 600px;
+
+    margin: 0 auto;
+
+    padding: 16px 20px;
+
+    border-radius: 14px;
+
+    background: #eaf6f5;
+
+    color: #173f46;
+
+    font-size: 18px;
+
+    font-weight: 700;
+
+    line-height: 1.5;
+
+    box-sizing: border-box;
+}
+
+
+/* ================= BACK BUTTON ================= */
+
+.rps-back-btn {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    min-width: 180px;
+
+    height: 46px;
+
+    margin-top: 30px;
+
+    padding: 0 22px;
+
+    box-sizing: border-box;
+
+    border: 2px solid #168c91;
+
+    border-radius: 11px;
+
+    background: #ffffff;
+
+    color: #168c91;
+
+    text-decoration: none;
+
+    font-size: 16px;
+
+    font-weight: 800;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+.rps-back-btn:hover {
+
+    background: #eaf6f5;
+
+    transform: translateY(-2px);
+}
+
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 700px) {
+
+    .rps-page {
+
+        padding:
+            35px
+            15px
+            60px;
+    }
+
+
+    .rps-card {
+
+        padding:
+            35px
+            20px;
+
+        border-radius: 20px;
+    }
+
+
+    .rps-card h1 {
+
+        font-size: 32px;
+    }
+
+
+    .rps-card p {
+
+        font-size: 16px;
+    }
+
+
+    .rps-buttons {
+
+        flex-direction: column;
+
+        width: 100%;
+    }
+
+
+    .rps-btn {
+
+        width: 100%;
+
+        max-width: 280px;
+    }
+
+}
+
+</style>
+
+
+<!-- =====================================================
+     ROCK PAPER SCISSORS
+     ===================================================== -->
+
+<section class="rps-page">
+
+    <div class="rps-card">
+
+
+        <!-- TITLE -->
+
+        <h1>
+            ✊✋✌️ Rock Paper Scissors
+        </h1>
+
+
+        <!-- INSTRUCTIONS -->
+
+        <p>
+            Choose one:
+        </p>
+
+
+        <!-- CHOICES -->
+
+        <div class="rps-buttons">
+
+            <button
+                type="button"
+                class="rps-btn"
+                onclick="playGame('rock')">
+
+                ✊ Rock
+
+            </button>
+
+
+            <button
+                type="button"
+                class="rps-btn"
+                onclick="playGame('paper')">
+
+                ✋ Paper
+
+            </button>
+
+
+            <button
+                type="button"
+                class="rps-btn"
+                onclick="playGame('scissors')">
+
+                ✌️ Scissors
+
+            </button>
+
+        </div>
+
+
+        <!-- RESULT -->
+
+        <div id="result"></div>
+
+
+        <!-- BACK TO GAMES -->
+
+        <a
+            href="{% url 'games' %}"
+            class="rps-back-btn">
+
+            ← Back to Games
+
+        </a>
+
+
+    </div>
+
+</section>
+
+
+<script>
+
+/* =====================================================
+   ROCK PAPER SCISSORS GAME LOGIC
+   ===================================================== */
+
+function playGame(userChoice) {
+
+    const choices = [
+        "rock",
+        "paper",
+        "scissors"
+    ];
+
+
+    const computerChoice =
+        choices[
+            Math.floor(
+                Math.random() * choices.length
+            )
+        ];
+
+
+    let message = "";
+
+
+    /* ================= TIE ================= */
+
+    if (
+        userChoice === computerChoice
+    ) {
+
+        message =
+            `🤝 Tie! Both chose ${computerChoice}.`;
+
+    }
+
+
+    /* ================= USER WINS ================= */
+
+    else if (
+
+        (userChoice === "rock" &&
+         computerChoice === "scissors")
+
+        ||
+
+        (userChoice === "scissors" &&
+         computerChoice === "paper")
+
+        ||
+
+        (userChoice === "paper" &&
+         computerChoice === "rock")
+
+    ) {
+
+        message =
+            `🎉 You win! Computer chose ${computerChoice}.`;
+
+    }
+
+
+    /* ================= USER LOSES ================= */
+
+    else {
+
+        message =
+            `😞 You lose! Computer chose ${computerChoice}.`;
+
+    }
+
+
+    document.getElementById(
+        "result"
+    ).textContent = message;
+
+}
+
+</script>
+
+
+{% endblock %}

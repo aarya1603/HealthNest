@@ -1,0 +1,276 @@
+{% extends 'base.html' %}
+
+{% block title %}Insurance | HealthNest{% endblock %}
+
+{% block content %}
+
+<div class="insurance-page">
+
+    <div class="insurance-header">
+
+        <span class="dashboard-label">
+            INSURANCE MANAGEMENT
+        </span>
+
+        <h1>My Insurance</h1>
+
+        <p>
+            Keep your insurance policies, coverage details and expiry dates
+            organized in one place.
+        </p>
+
+    </div>
+
+
+    <!-- ADD POLICY -->
+
+    <div class="insurance-card">
+
+        <h2>Add Insurance Policy</h2>
+
+        <p>
+            Enter your policy details below.
+        </p>
+
+        <form method="POST" enctype="multipart/form-data">
+
+            {% csrf_token %}
+
+            <div class="insurance-form-grid">
+
+                <div class="form-field">
+                    <label>Insurance Provider</label>
+
+                    <input
+                        type="text"
+                        name="provider"
+                        placeholder="e.g. Star Health"
+                        required
+                    >
+                </div>
+
+
+                <div class="form-field">
+                    <label>Policy Number</label>
+
+                    <input
+                        type="text"
+                        name="policy_number"
+                        placeholder="Enter policy number"
+                        required
+                    >
+                </div>
+
+
+                <div class="form-field">
+                    <label>Policy Type</label>
+
+                    <select name="policy_type" required>
+
+                        <option value="">
+                            Select policy type
+                        </option>
+
+                        <option value="Health Insurance">
+                            Health Insurance
+                        </option>
+
+                        <option value="Family Floater">
+                            Family Floater
+                        </option>
+
+                        <option value="Senior Citizen">
+                            Senior Citizen
+                        </option>
+
+                        <option value="Other">
+                            Other
+                        </option>
+
+                    </select>
+                </div>
+
+
+                <div class="form-field">
+                    <label>Coverage Amount</label>
+
+                    <input
+                        type="number"
+                        name="coverage_amount"
+                        placeholder="e.g. 500000"
+                    >
+                </div>
+
+
+                <div class="form-field">
+                    <label>Start Date</label>
+
+                    <input
+                        type="date"
+                        name="start_date"
+                        required
+                    >
+                </div>
+
+
+                <div class="form-field">
+                    <label>Expiry Date</label>
+
+                    <input
+                        type="date"
+                        name="expiry_date"
+                        required
+                    >
+                </div>
+
+            </div>
+
+
+            <div class="form-field">
+
+                <label>
+                    Policy Document
+                    <span>(Optional)</span>
+                </label>
+
+                <input
+                    type="file"
+                    name="policy_document"
+                    accept=".pdf,.jpg,.jpeg,.png"
+                >
+
+            </div>
+
+
+            <button
+                type="submit"
+                class="profile-save-btn"
+            >
+                + Add Policy
+            </button>
+
+        </form>
+
+    </div>
+
+
+    <!-- POLICY HISTORY -->
+
+    <div class="insurance-history">
+
+        <div class="section-title">
+
+            <span>
+                POLICY HISTORY
+            </span>
+
+            <h2>
+                My Policies
+            </h2>
+
+        </div>
+
+
+        {% if policies %}
+
+            <div class="policy-list">
+
+                {% for policy in policies %}
+
+                    <div class="policy-card">
+
+                        <div class="policy-icon">
+                            🛡️
+                        </div>
+
+
+                        <div class="policy-info">
+
+                            <h3>
+                                {{ policy.provider }}
+                            </h3>
+
+                            <p>
+                                {{ policy.policy_type }}
+                            </p>
+
+                            <small>
+                                Policy No: {{ policy.policy_number }}
+                            </small>
+
+                        </div>
+
+
+                        <div class="policy-details">
+
+                            <span>
+                                Coverage
+                            </span>
+
+                            <strong>
+                                {% if policy.coverage_amount %}
+                                    ₹{{ policy.coverage_amount }}
+                                {% else %}
+                                    Not specified
+                                {% endif %}
+                            </strong>
+
+                        </div>
+
+
+                        <div class="policy-expiry">
+
+                            <span>
+                                Expires
+                            </span>
+
+                            <strong>
+                                {{ policy.expiry_date }}
+                            </strong>
+
+                        </div>
+
+
+                        {% if policy.policy_document %}
+
+                            <a
+                                href="{{ policy.policy_document.url }}"
+                                target="_blank"
+                                class="report-view-btn"
+                            >
+                                View Document →
+                            </a>
+
+                        {% endif %}
+
+                    </div>
+
+                {% endfor %}
+
+            </div>
+
+        {% else %}
+
+            <div class="empty-reports">
+
+                <div>
+                    🛡️
+                </div>
+
+                <h3>
+                    No insurance policies yet
+                </h3>
+
+                <p>
+                    Add your first insurance policy above.
+                </p>
+
+            </div>
+
+        {% endif %}
+
+    </div>
+
+</div>
+
+{% endblock %}

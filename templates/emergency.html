@@ -1,0 +1,1905 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Emergency Support | HealthNest</title>
+
+
+    <style>
+
+        /* =====================================================
+           GLOBAL
+        ===================================================== */
+
+        * {
+            box-sizing: border-box;
+        }
+
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+
+        body {
+            margin: 0;
+
+            font-family: Arial, Helvetica, sans-serif;
+
+            background: #fff8f8;
+
+            color: #193f46;
+        }
+
+
+        a {
+            text-decoration: none;
+        }
+
+
+
+        /* =====================================================
+           NAVBAR
+        ===================================================== */
+
+        .navbar {
+
+            min-height: 72px;
+
+            background: white;
+
+            border-bottom: 1px solid #e5eeee;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            padding: 0 6%;
+
+            position: sticky;
+
+            top: 0;
+
+            z-index: 1000;
+        }
+
+
+        .logo {
+
+            font-size: 30px;
+
+            font-weight: bold;
+
+            color: #193f46;
+        }
+
+
+        .nav-links {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 32px;
+        }
+
+
+        .nav-links a {
+
+            color: #53696e;
+
+            font-size: 17px;
+
+            font-weight: bold;
+
+            transition: 0.2s;
+        }
+
+
+        .nav-links a:hover {
+
+            color: #d62828;
+        }
+
+
+        .nav-links .active {
+
+            color: #d62828;
+        }
+
+
+
+        /* =====================================================
+           MAIN PAGE
+        ===================================================== */
+
+        .emergency-page {
+
+            width: 100%;
+
+            padding: 55px 5% 80px;
+        }
+
+
+
+        /* =====================================================
+           HERO
+        ===================================================== */
+
+        .hero {
+
+            text-align: center;
+
+            max-width: 1000px;
+
+            margin: 0 auto;
+        }
+
+
+        .emergency-label {
+
+            color: #d62828;
+
+            font-size: 16px;
+
+            font-weight: bold;
+
+            letter-spacing: 2px;
+
+            margin-bottom: 18px;
+        }
+
+
+        .hero h1 {
+
+            margin: 0;
+
+            font-size: clamp(42px, 5vw, 64px);
+
+            color: #193f46;
+        }
+
+
+        .hero-text {
+
+            max-width: 850px;
+
+            margin: 22px auto 30px;
+
+            font-size: 19px;
+
+            line-height: 1.6;
+
+            color: #64777b;
+        }
+
+
+
+        /* =====================================================
+           I NEED HELP
+        ===================================================== */
+
+        .help-button {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            gap: 10px;
+
+            background: #d62828;
+
+            color: white;
+
+            border: none;
+
+            border-radius: 14px;
+
+            padding: 18px 42px;
+
+            font-size: 21px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+            box-shadow: 0 8px 20px rgba(214, 40, 40, 0.18);
+
+            transition: 0.2s;
+        }
+
+
+        .help-button:hover {
+
+            background: #bd2020;
+
+            transform: translateY(-2px);
+        }
+
+
+
+        /* =====================================================
+           EMERGENCY SERVICES
+        ===================================================== */
+
+        .services-section {
+
+            max-width: 1200px;
+
+            margin: 70px auto 0;
+
+            scroll-margin-top: 100px;
+        }
+
+
+        .section-heading {
+
+            text-align: center;
+
+            margin-bottom: 30px;
+        }
+
+
+        .section-title {
+
+            font-size: 34px;
+
+            margin: 0 0 10px;
+
+            color: #193f46;
+        }
+
+
+        .section-description {
+
+            color: #6a7d81;
+
+            font-size: 17px;
+
+            margin: 0;
+        }
+
+
+        .services-grid {
+
+            display: grid;
+
+            grid-template-columns: repeat(4, 1fr);
+
+            gap: 22px;
+        }
+
+
+        .service-card {
+
+            background: white;
+
+            border: 1px solid #eadede;
+
+            border-radius: 20px;
+
+            padding: 30px 20px;
+
+            min-height: 330px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            text-align: center;
+
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.04);
+
+            transition: 0.2s;
+        }
+
+
+        .service-card:hover {
+
+            transform: translateY(-4px);
+
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+        }
+
+
+        .service-top {
+
+            width: 100%;
+        }
+
+
+        .service-icon {
+
+            width: 70px;
+
+            height: 70px;
+
+            border-radius: 18px;
+
+            background: #fff0f0;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-size: 38px;
+
+            margin: 0 auto 20px;
+        }
+
+
+        .service-card h3 {
+
+            margin: 0 0 12px;
+
+            font-size: 23px;
+
+            color: #193f46;
+        }
+
+
+        .service-card p {
+
+            color: #687b7f;
+
+            font-size: 15px;
+
+            line-height: 1.6;
+
+            min-height: 72px;
+
+            margin: 0;
+        }
+
+
+        .call-button {
+
+            width: 100%;
+
+            padding: 13px;
+
+            background: #d62828;
+
+            color: white;
+
+            border-radius: 10px;
+
+            font-size: 16px;
+
+            font-weight: bold;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            transition: 0.2s;
+        }
+
+
+        .call-button:hover {
+
+            background: #bd2020;
+        }
+
+
+
+        /* =====================================================
+           EMERGENCY INFO
+        ===================================================== */
+
+        .emergency-info {
+
+            max-width: 950px;
+
+            margin: 35px auto 0;
+
+            padding: 18px 25px;
+
+            background: #fff0f0;
+
+            border: 1px solid #f2cccc;
+
+            border-radius: 14px;
+
+            color: #7e3030;
+
+            text-align: center;
+
+            line-height: 1.6;
+        }
+
+
+
+        /* =====================================================
+           HOSPITAL
+        ===================================================== */
+
+        .hospital-section {
+
+            max-width: 1200px;
+
+            margin: 70px auto 0;
+
+            background: white;
+
+            border: 1px solid #dfe9ea;
+
+            border-radius: 22px;
+
+            padding: 45px;
+
+            text-align: center;
+
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.04);
+        }
+
+
+        .hospital-icon {
+
+            font-size: 45px;
+
+            margin-bottom: 10px;
+        }
+
+
+        .hospital-section h2 {
+
+            margin: 0 0 12px;
+
+            font-size: 34px;
+
+            color: #193f46;
+        }
+
+
+        .hospital-section p {
+
+            color: #687b7f;
+
+            font-size: 17px;
+
+            margin: 0 auto 28px;
+
+            max-width: 700px;
+        }
+
+
+        .hospital-button {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            padding: 15px 28px;
+
+            background: #299aa5;
+
+            color: white;
+
+            border: none;
+
+            border-radius: 11px;
+
+            font-size: 17px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+            transition: 0.2s;
+        }
+
+
+        .hospital-button:hover {
+
+            background: #207f88;
+
+            transform: translateY(-2px);
+        }
+
+
+        .hospital-status {
+
+            margin-top: 20px;
+
+            color: #65787d;
+
+            font-size: 15px;
+
+            min-height: 25px;
+        }
+
+
+
+        /* =====================================================
+           FAMILY CONTACTS
+        ===================================================== */
+
+        .family-section {
+
+            max-width: 1200px;
+
+            margin: 70px auto 0;
+
+            background: white;
+
+            border: 1px solid #dfe9ea;
+
+            border-radius: 22px;
+
+            padding: 45px;
+
+            text-align: left;
+
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.04);
+        }
+
+
+        .family-header {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 20px;
+
+            padding-bottom: 25px;
+
+            border-bottom: 1px solid #e1ebec;
+        }
+
+
+        .family-header-icon {
+
+            width: 65px;
+
+            height: 65px;
+
+            flex-shrink: 0;
+
+            border-radius: 16px;
+
+            background: #eaf7f8;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-size: 34px;
+        }
+
+
+        .family-header h2 {
+
+            margin: 0 0 8px;
+
+            font-size: 34px;
+
+            color: #193f46;
+        }
+
+
+        .family-header p {
+
+            margin: 0;
+
+            color: #687b7f;
+
+            font-size: 16px;
+        }
+
+
+
+        /* =====================================================
+           CONTACT LIST
+        ===================================================== */
+
+        .contacts-list {
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 18px;
+
+            margin-top: 28px;
+        }
+
+
+        .contact-card {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 20px;
+
+            padding: 22px;
+
+            background: #fbfefe;
+
+            border: 1px solid #dce8e9;
+
+            border-radius: 16px;
+
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.04);
+
+            transition: 0.2s;
+        }
+
+
+        .contact-card:hover {
+
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.07);
+        }
+
+
+        .contact-icon {
+
+            width: 58px;
+
+            height: 58px;
+
+            flex-shrink: 0;
+
+            border-radius: 50%;
+
+            background: #e8f6f7;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-size: 28px;
+        }
+
+
+        .contact-info {
+
+            flex: 1;
+        }
+
+
+        .contact-info h3 {
+
+            margin: 0 0 7px;
+
+            font-size: 21px;
+
+            color: #193f46;
+        }
+
+
+        .contact-info p {
+
+            margin: 5px 0;
+
+            color: #65787d;
+
+            font-size: 15px;
+        }
+
+
+        .contact-info strong {
+
+            color: #193f46;
+        }
+
+
+
+        /* =====================================================
+           CONTACT ACTIONS
+        ===================================================== */
+
+        .contact-actions {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 10px;
+
+            flex-shrink: 0;
+        }
+
+
+        /* =====================================================
+           CALL CONTACT
+        ===================================================== */
+
+        .call-contact {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            padding: 12px 22px;
+
+            background: #299aa5;
+
+            color: white;
+
+            border-radius: 10px;
+
+            font-weight: bold;
+
+            white-space: nowrap;
+
+            transition: 0.2s;
+        }
+
+
+        .call-contact:hover {
+
+            background: #207f88;
+
+            transform: translateY(-1px);
+        }
+
+
+
+        /* =====================================================
+           DELETE CONTACT
+        ===================================================== */
+
+        .delete-contact {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            padding: 12px 22px;
+
+            background: #fff0f0;
+
+            color: #d62828;
+
+            border: 1px solid #f0bcbc;
+
+            border-radius: 10px;
+
+            font-family: inherit;
+
+            font-size: 15px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+            white-space: nowrap;
+
+            transition: 0.2s;
+        }
+
+
+        .delete-contact:hover {
+
+            background: #d62828;
+
+            color: white;
+
+            border-color: #d62828;
+
+            transform: translateY(-1px);
+        }
+
+
+
+        /* =====================================================
+           NO CONTACTS
+        ===================================================== */
+
+        .no-contacts {
+
+            padding: 55px 30px;
+
+            text-align: center;
+
+            border: 2px dashed #d5e5e7;
+
+            border-radius: 18px;
+
+            background: #fcffff;
+        }
+
+
+        .no-contact-icon {
+
+            font-size: 50px;
+
+            margin-bottom: 15px;
+        }
+
+
+        .no-contacts h3 {
+
+            margin: 0 0 10px;
+
+            font-size: 22px;
+
+            color: #193f46;
+        }
+
+
+        .no-contacts p {
+
+            margin: 0;
+
+            color: #65787d;
+
+            font-size: 16px;
+        }
+
+
+
+        /* =====================================================
+           ADD CONTACT
+        ===================================================== */
+
+        .add-contact-button {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            width: 100%;
+
+            margin-top: 22px;
+
+            padding: 16px;
+
+            background: #299aa5;
+
+            color: white;
+
+            border-radius: 11px;
+
+            font-size: 17px;
+
+            font-weight: bold;
+
+            transition: 0.2s;
+        }
+
+
+        .add-contact-button:hover {
+
+            background: #207f88;
+
+            transform: translateY(-1px);
+        }
+
+
+
+        /* =====================================================
+           FOOTER
+        ===================================================== */
+
+        footer {
+
+            background: #163f46;
+
+            color: white;
+
+            padding: 45px 7% 25px;
+
+            margin-top: 30px;
+        }
+
+
+        .footer-content {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            gap: 30px;
+        }
+
+
+        .footer-logo {
+
+            font-size: 28px;
+
+            font-weight: bold;
+        }
+
+
+        .footer-tagline {
+
+            color: #c7d9db;
+
+            margin-top: 10px;
+        }
+
+
+        .footer-links {
+
+            display: flex;
+
+            gap: 28px;
+        }
+
+
+        .footer-links span {
+
+            color: #c7d9db;
+        }
+
+
+        .footer-bottom {
+
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+
+            margin-top: 30px;
+
+            padding-top: 20px;
+
+            text-align: center;
+
+            color: #c7d9db;
+        }
+
+
+
+        /* =====================================================
+           RESPONSIVE
+        ===================================================== */
+
+        @media (max-width: 1000px) {
+
+            .services-grid {
+
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+
+            .nav-links {
+
+                gap: 15px;
+            }
+
+        }
+
+
+
+        @media (max-width: 700px) {
+
+            .navbar {
+
+                height: auto;
+
+                padding: 18px 5%;
+
+                flex-direction: column;
+
+                gap: 15px;
+            }
+
+
+            .nav-links {
+
+                flex-wrap: wrap;
+
+                justify-content: center;
+
+                gap: 12px;
+            }
+
+
+            .emergency-page {
+
+                padding-top: 40px;
+            }
+
+
+            .services-grid {
+
+                grid-template-columns: 1fr;
+            }
+
+
+            .hospital-section,
+            .family-section {
+
+                padding: 25px 18px;
+            }
+
+
+            .family-header {
+
+                align-items: flex-start;
+            }
+
+
+            .contact-card {
+
+                flex-direction: column;
+
+                align-items: stretch;
+            }
+
+
+            .contact-info {
+
+                width: 100%;
+            }
+
+
+            .contact-actions {
+
+                width: 100%;
+
+                flex-direction: column;
+
+                gap: 10px;
+            }
+
+
+            .call-contact,
+            .delete-contact {
+
+                width: 100%;
+            }
+
+
+            .footer-content {
+
+                flex-direction: column;
+
+                align-items: flex-start;
+            }
+
+
+            .footer-links {
+
+                flex-wrap: wrap;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         NAVBAR
+    ===================================================== -->
+
+    <nav class="navbar">
+
+        <a href="/" class="logo">
+            💙 HealthNest
+        </a>
+
+
+        <div class="nav-links">
+
+            <a href="/">
+                Home
+            </a>
+
+
+           <a href="{% url 'medicine_list' %}">
+    💊 Medicines
+</a>
+
+
+<a href="{% url 'games' %}">
+    🎮 Games
+</a>
+
+
+<a
+    href="{% url 'emergency' %}"
+    class="active"
+>
+    🚨 Emergency
+</a>
+
+
+<a href="{% url 'contact_list' %}">
+    Contact
+</a>
+
+        </div>
+
+    </nav>
+
+
+
+    <!-- =====================================================
+         MAIN
+    ===================================================== -->
+
+    <main class="emergency-page">
+
+
+        <!-- =================================================
+             HERO
+        ================================================= -->
+
+        <section class="hero">
+
+            <div class="emergency-label">
+                EMERGENCY SUPPORT
+            </div>
+
+
+            <h1>
+                Need Emergency Help?
+            </h1>
+
+
+            <p class="hero-text">
+
+                If you or someone nearby needs urgent
+                assistance, choose the appropriate
+                emergency service below.
+
+            </p>
+
+
+            <button
+                type="button"
+                class="help-button"
+                onclick="showEmergencyServices()"
+            >
+                🚨 I NEED HELP
+            </button>
+
+        </section>
+
+
+
+        <!-- =================================================
+             EMERGENCY SERVICES
+        ================================================= -->
+
+        <section
+            class="services-section"
+            id="emergency-services"
+        >
+
+            <div class="section-heading">
+
+                <h2 class="section-title">
+                    Emergency Services
+                </h2>
+
+
+                <p class="section-description">
+                    Select the service you need immediately.
+                </p>
+
+            </div>
+
+
+
+            <div class="services-grid">
+
+
+                <!-- AMBULANCE -->
+
+                <div class="service-card">
+
+                    <div class="service-top">
+
+                        <div class="service-icon">
+                            🚑
+                        </div>
+
+
+                        <h3>
+                            Ambulance
+                        </h3>
+
+
+                        <p>
+                            For medical emergencies
+                            requiring immediate assistance.
+                        </p>
+
+                    </div>
+
+
+                    <a
+                        href="tel:102"
+                        class="call-button"
+                    >
+                        📞 Call 102
+                    </a>
+
+                </div>
+
+
+
+                <!-- POLICE -->
+
+                <div class="service-card">
+
+                    <div class="service-top">
+
+                        <div class="service-icon">
+                            👮
+                        </div>
+
+
+                        <h3>
+                            Police
+                        </h3>
+
+
+                        <p>
+                            For immediate police or
+                            personal safety assistance.
+                        </p>
+
+                    </div>
+
+
+                    <a
+                        href="tel:100"
+                        class="call-button"
+                    >
+                        📞 Call 100
+                    </a>
+
+                </div>
+
+
+
+                <!-- FIRE -->
+
+                <div class="service-card">
+
+                    <div class="service-top">
+
+                        <div class="service-icon">
+                            🔥
+                        </div>
+
+
+                        <h3>
+                            Fire &amp; Rescue
+                        </h3>
+
+
+                        <p>
+                            For fires, rescue situations
+                            and related emergencies.
+                        </p>
+
+                    </div>
+
+
+                    <a
+                        href="tel:101"
+                        class="call-button"
+                    >
+                        📞 Call 101
+                    </a>
+
+                </div>
+
+
+
+                <!-- GENERAL -->
+
+                <div class="service-card">
+
+                    <div class="service-top">
+
+                        <div class="service-icon">
+                            🆘
+                        </div>
+
+
+                        <h3>
+                            General Emergency
+                        </h3>
+
+
+                        <p>
+                            For any situation requiring
+                            urgent emergency assistance.
+                        </p>
+
+                    </div>
+
+
+                    <a
+                        href="tel:112"
+                        class="call-button"
+                    >
+                        📞 Call 112
+                    </a>
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- =================================================
+                 EMERGENCY INFO
+            ================================================= -->
+
+            <div class="emergency-info">
+
+                <strong>
+                    Emergency number: 112
+                </strong>
+
+
+                <br>
+
+
+                In an urgent situation, use this feature
+                to connect with emergency services.
+                Make sure your device is able to make
+                phone calls.
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             NEAREST HOSPITAL
+        ================================================= -->
+
+        <section class="hospital-section">
+
+            <div class="hospital-icon">
+                🏥
+            </div>
+
+
+            <h2>
+                Find a Nearby Hospital
+            </h2>
+
+
+            <p>
+                Find hospitals and medical centres near
+                your current location using maps.
+            </p>
+
+
+            <button
+                type="button"
+                class="hospital-button"
+                onclick="findHospital()"
+            >
+                📍 Find Nearest Hospital
+            </button>
+
+
+            <div
+                id="hospital-status"
+                class="hospital-status"
+            ></div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             FAMILY CONTACTS
+        ================================================= -->
+
+        <section class="family-section">
+
+
+            <!-- FAMILY HEADER -->
+
+            <div class="family-header">
+
+                <div class="family-header-icon">
+                    👥
+                </div>
+
+
+                <div>
+
+                    <h2>
+                        Contact Family
+                    </h2>
+
+
+                    <p>
+                        Quickly contact a trusted family
+                        member or caregiver during an emergency.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 CONTACTS FROM DATABASE
+            ================================================= -->
+
+            <div class="contacts-list">
+
+
+                {% if emergency_contacts %}
+
+
+                    {% for contact in emergency_contacts %}
+
+
+                        <div class="contact-card">
+
+
+                            <!-- ICON -->
+
+                            <div class="contact-icon">
+                                👤
+                            </div>
+
+
+
+                            <!-- INFORMATION -->
+
+                            <div class="contact-info">
+
+                                <h3>
+                                    {{ contact.name }}
+                                </h3>
+
+
+                                <p>
+
+                                    <strong>
+                                        Relationship:
+                                    </strong>
+
+                                    {{ contact.relationship }}
+
+                                </p>
+
+
+                                <p>
+
+                                    <strong>
+                                        Phone:
+                                    </strong>
+
+                                    {{ contact.phone }}
+
+                                </p>
+
+                            </div>
+
+
+
+                            <!-- =================================================
+                                 ACTION BUTTONS
+                            ================================================= -->
+
+                            <div class="contact-actions">
+
+
+                                <!-- CALL -->
+
+                                <a
+                                    href="tel:{{ contact.phone }}"
+                                    class="call-contact"
+                                >
+                                    📞 Call
+                                </a>
+
+
+
+                                <!-- DELETE -->
+
+                                <form
+                                    method="POST"
+                                    action="{% url 'delete_emergency_contact' contact.id %}"
+                                    onsubmit="return confirmDelete('{{ contact.name|escapejs }}');"
+                                >
+
+                                    {% csrf_token %}
+
+
+                                    <button
+                                        type="submit"
+                                        class="delete-contact"
+                                    >
+                                        🗑️ Delete
+                                    </button>
+
+                                </form>
+
+
+                            </div>
+
+
+                        </div>
+
+
+                    {% endfor %}
+
+
+                {% else %}
+
+
+                    <!-- =================================================
+                         NO CONTACTS
+                    ================================================= -->
+
+                    <div class="no-contacts">
+
+                        <div class="no-contact-icon">
+                            👥
+                        </div>
+
+
+                        <h3>
+                            No emergency contacts yet
+                        </h3>
+
+
+                        <p>
+                            Add a trusted family member
+                            or caregiver so they can be
+                            contacted quickly.
+                        </p>
+
+                    </div>
+
+
+                {% endif %}
+
+
+            </div>
+
+
+
+            <!-- =================================================
+                 ADD CONTACT
+            ================================================= -->
+
+            <div class="contact-management">
+
+    <!-- ADD CONTACT -->
+
+    <a
+        href="{% url 'add_emergency_contact' %}"
+        class="add-contact-button"
+    >
+        ＋ Add Family Contact
+    </a>
+
+
+    <!-- CLEAR ALL CONTACTS -->
+
+    <form
+        method="POST"
+        action="{% url 'clear_emergency_contacts' %}"
+        onsubmit="return confirmClearContacts();"
+    >
+
+        {% csrf_token %}
+
+        <button
+            type="submit"
+            class="clear-contacts-button"
+        >
+            🗑️ Clear All Contacts
+        </button>
+
+    </form>
+
+</div>
+
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- =====================================================
+         FOOTER
+    ===================================================== -->
+
+    <footer>
+
+
+        <div class="footer-content">
+
+
+            <div>
+
+                <div class="footer-logo">
+                    💙 HealthNest
+                </div>
+
+
+                <div class="footer-tagline">
+                    Technology that cares.
+                </div>
+
+            </div>
+
+
+
+            <div class="footer-links">
+
+                <span>
+                    Accessibility
+                </span>
+
+
+                <span>
+                    Healthcare
+                </span>
+
+
+                <span>
+                    Safety
+                </span>
+
+
+                <span>
+                    Technology
+                </span>
+
+            </div>
+
+
+        </div>
+
+
+
+        <div class="footer-bottom">
+
+            © 2026 HealthNest. Built with care.
+
+        </div>
+
+
+    </footer>
+
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ===================================================== -->
+
+    <script>
+
+
+        /* =================================================
+           I NEED HELP BUTTON
+        ================================================= */
+
+        function showEmergencyServices() {
+
+            const section =
+                document.getElementById(
+                    "emergency-services"
+                );
+
+
+            if (section) {
+
+                section.scrollIntoView({
+
+                    behavior: "smooth",
+
+                    block: "start"
+
+                });
+
+            }
+
+        }
+
+
+
+        /* =================================================
+           FIND NEAREST HOSPITAL
+        ================================================= */
+
+        function findHospital() {
+
+            const status =
+                document.getElementById(
+                    "hospital-status"
+                );
+
+
+            status.textContent =
+                "📍 Getting your location...";
+
+
+            /*
+             * Check whether browser
+             * supports location services.
+             */
+
+            if (!navigator.geolocation) {
+
+                status.textContent =
+                    "❌ Location is not supported by your browser.";
+
+                return;
+
+            }
+
+
+            /*
+             * Ask browser for current location.
+             */
+
+            navigator.geolocation.getCurrentPosition(
+
+
+                function(position) {
+
+
+                    const latitude =
+                        position.coords.latitude;
+
+
+                    const longitude =
+                        position.coords.longitude;
+
+
+                    status.textContent =
+                        "📍 Location found. Opening nearby hospitals...";
+
+
+                    /*
+                     * Google Maps search URL.
+                     */
+
+                    const mapsUrl =
+                        "https://www.google.com/maps/search/hospitals/@"
+                        + latitude
+                        + ","
+                        + longitude
+                        + ",14z";
+
+
+                    window.open(
+                        mapsUrl,
+                        "_blank"
+                    );
+
+                },
+
+
+                function(error) {
+
+
+                    if (
+                        error.code ===
+                        error.PERMISSION_DENIED
+                    ) {
+
+                        status.textContent =
+                            "❌ Location permission was denied. Please allow location access.";
+
+                    }
+
+
+                    else if (
+                        error.code ===
+                        error.POSITION_UNAVAILABLE
+                    ) {
+
+                        status.textContent =
+                            "❌ Your location could not be determined.";
+
+                    }
+
+
+                    else if (
+                        error.code ===
+                        error.TIMEOUT
+                    ) {
+
+                        status.textContent =
+                            "❌ Location request timed out. Please try again.";
+
+                    }
+
+
+                    else {
+
+                        status.textContent =
+                            "❌ Unable to get your location. Please try again.";
+
+                    }
+
+                },
+
+
+                {
+
+                    enableHighAccuracy: true,
+
+                    timeout: 10000,
+
+                    maximumAge: 0
+
+                }
+
+            );
+
+        }
+
+
+
+        /* =================================================
+           DELETE CONTACT CONFIRMATION
+        ================================================= */
+
+        function confirmDelete(name) {
+
+            return confirm(
+
+                "Are you sure you want to delete " +
+                name +
+                " from your emergency contacts?"
+
+            );
+
+        }
+        
+
+
+    </script>
+
+
+</body>
+
+</html>

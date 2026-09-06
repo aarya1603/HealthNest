@@ -1,0 +1,169 @@
+{% extends 'base.html' %}
+
+{% block title %}My Health Profile | HealthNest{% endblock %}
+
+{% block content %}
+
+<div class="profile-page">
+
+    <!-- HEADER -->
+    <div class="profile-header">
+
+        <div>
+            <span class="dashboard-label">
+                PERSONAL HEALTH
+            </span>
+
+            <h1>
+                My Health Profile
+            </h1>
+
+            <p>
+                Keep your important health information organized
+                and available when you need it.
+            </p>
+        </div>
+
+    </div>
+
+
+    <!-- PROFILE FORM -->
+    <div class="profile-card">
+
+        <form method="POST">
+
+            {% csrf_token %}
+
+
+            <!-- BASIC INFORMATION -->
+
+            <h2 class="profile-section-title">
+                Basic Information
+            </h2>
+
+            <div class="form-grid">
+
+                <div class="form-field">
+
+                    <label>
+                        Full Name
+                    </label>
+
+                    {{ form.full_name }}
+
+                </div>
+
+
+                <div class="form-field">
+
+                    <label>
+                        Date of Birth
+                    </label>
+
+                    {{ form.date_of_birth }}
+
+                </div>
+
+
+                <div class="form-field">
+
+                    <label>
+                        Blood Group
+                    </label>
+
+                    {{ form.blood_group }}
+
+                </div>
+
+
+                <div class="form-field">
+
+                    <label>
+                        Phone Number
+                    </label>
+
+                    {{ form.phone }}
+
+                </div>
+
+            </div>
+
+
+            <!-- MEDICAL INFORMATION -->
+
+            <h2 class="profile-section-title">
+                Medical Information
+            </h2>
+
+            <div class="form-field">
+
+                <label>
+                    Known Allergies
+                </label>
+
+                {{ form.allergies }}
+
+                <small>
+                    Mention medicines, foods or other known allergies.
+                </small>
+
+            </div>
+
+
+            <div class="form-field">
+
+                <label>
+                    Existing Medical Conditions
+                </label>
+
+                {{ form.medical_conditions }}
+
+                <small>
+                    Example: Diabetes, hypertension, asthma, etc.
+                </small>
+
+            </div>
+
+
+            <!-- EMERGENCY -->
+
+            <h2 class="profile-section-title">
+                Emergency Information
+            </h2>
+
+            <div class="form-field">
+
+                <label>
+                    Important Emergency Notes
+                </label>
+
+                {{ form.emergency_notes }}
+
+                <small>
+                    Add information that doctors or family members
+                    may need during an emergency.
+                </small>
+
+            </div>
+
+
+            <!-- SAVE -->
+
+            <div class="profile-actions">
+
+                <button
+                    type="submit"
+                    class="profile-save-btn"
+                >
+                    Save Health Profile
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+{% endblock %}

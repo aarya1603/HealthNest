@@ -1,0 +1,2664 @@
+/* =========================================================
+   CARE360 — COMPLETE MAIN STYLESHEET
+   ========================================================= */
+
+
+/* =========================================================
+   1. GLOBAL RESET
+   ========================================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+
+    background: #f4faf9;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    color: #173f46;
+}
+
+img {
+    max-width: 100%;
+}
+
+a {
+    color: inherit;
+}
+
+
+/* =========================================================
+   2. HEADER / NAVIGATION
+   ========================================================= */
+
+.site-header {
+    width: 100%;
+
+    background: #ffffff;
+
+    border-bottom: 1px solid #e1eeee;
+
+    position: sticky;
+    top: 0;
+
+    z-index: 1000;
+}
+
+
+.nav-container {
+    width: min(1250px, 92%);
+
+    min-height: 78px;
+
+    margin: auto;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 30px;
+}
+
+
+.logo {
+    display: inline-flex;
+
+    align-items: center;
+
+    text-decoration: none;
+
+    color: #173f46;
+
+    font-size: 28px;
+
+    font-weight: 900;
+
+    white-space: nowrap;
+}
+
+
+.navbar {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: flex-end;
+
+    gap: 30px;
+}
+
+
+.navbar a {
+    text-decoration: none;
+
+    color: #50676b;
+
+    font-size: 17px;
+
+    font-weight: 800;
+
+    transition:
+        color 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+.navbar a:hover {
+    color: #168c91;
+
+    transform: translateY(-1px);
+}
+
+
+/* Emergency navigation */
+
+.navbar a[href*="emergency"] {
+    color: #df3030;
+}
+
+
+/* =========================================================
+   3. MAIN CONTENT
+   ========================================================= */
+
+main {
+    width: 100%;
+}
+
+
+/* =========================================================
+   4. HERO SECTION
+   ========================================================= */
+
+.hero {
+    width: min(1100px, 90%);
+
+    margin: auto;
+
+    padding:
+        85px
+        20px
+        80px;
+
+    text-align: center;
+}
+
+
+.hero-badge {
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    margin-bottom: 20px;
+
+    color: #168c91;
+
+    font-size: 17px;
+
+    font-weight: 800;
+}
+
+
+.hero h1 {
+    margin: 0 0 12px;
+
+    color: #173f46;
+
+    font-size:
+        clamp(48px, 7vw, 76px);
+
+    line-height: 1;
+
+    letter-spacing: -2px;
+}
+
+
+.hero h2 {
+    margin: 0 0 20px;
+
+    color: #173f46;
+
+    font-size:
+        clamp(28px, 4vw, 40px);
+
+    line-height: 1.2;
+}
+
+
+.hero p {
+    max-width: 760px;
+
+    margin: 0 auto;
+
+    color: #657679;
+
+    font-size: 19px;
+
+    line-height: 1.7;
+}
+
+
+.hero-buttons {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 15px;
+
+    margin-top: 32px;
+
+    flex-wrap: wrap;
+}
+
+
+.hero-btn {
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    min-height: 50px;
+
+    padding:
+        13px
+        22px;
+
+    border-radius: 12px;
+
+    text-decoration: none;
+
+    font-size: 16px;
+
+    font-weight: 800;
+
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+.hero-btn:hover {
+    transform: translateY(-3px);
+}
+
+
+.hero-btn.primary {
+    background: #168c91;
+
+    color: #ffffff;
+
+    box-shadow:
+        0 7px 18px rgba(22, 140, 145, 0.18);
+}
+
+
+.hero-btn.primary:hover {
+    background: #126f73;
+}
+
+
+.hero-btn.secondary {
+    background: #ffffff;
+
+    color: #168c91;
+
+    border: 2px solid #168c91;
+}
+
+
+.hero-btn.secondary:hover {
+    background: #eaf6f5;
+}
+
+
+/* =========================================================
+   5. FEATURES SECTION
+   ========================================================= */
+
+.features-section {
+    width: min(1250px, 92%);
+
+    margin: auto;
+
+    padding:
+        30px
+        0
+        90px;
+}
+
+
+.section-heading {
+    max-width: 850px;
+
+    margin:
+        0 auto
+        55px;
+
+    text-align: center;
+}
+
+
+.section-heading > span {
+    display: block;
+
+    margin-bottom: 15px;
+
+    color: #168c91;
+
+    font-size: 14px;
+
+    font-weight: 900;
+
+    letter-spacing: 3px;
+}
+
+
+.section-heading h2 {
+    margin: 0 0 15px;
+
+    color: #173f46;
+
+    font-size:
+        clamp(32px, 4vw, 48px);
+
+    line-height: 1.15;
+
+    letter-spacing: -1px;
+}
+
+
+.section-heading p {
+    margin: 0;
+
+    color: #657679;
+
+    font-size: 17px;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   6. FEATURE GRID
+   ========================================================= */
+
+.features {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 25px;
+}
+
+
+.feature-link {
+    display: block;
+
+    color: inherit;
+
+    text-decoration: none;
+}
+
+
+.feature-box {
+    height: 100%;
+
+    min-height: 350px;
+
+    padding: 32px 28px;
+
+    background: #ffffff;
+
+    border:
+        1px solid #e0eeee;
+
+    border-radius: 19px;
+
+    box-shadow:
+        0 8px 28px rgba(30, 60, 65, 0.07);
+
+    display: flex;
+
+    flex-direction: column;
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        border-color 0.25s ease;
+}
+
+
+.feature-link:hover .feature-box {
+    transform: translateY(-7px);
+
+    box-shadow:
+        0 17px 35px rgba(30, 60, 65, 0.12);
+
+    border-color: #cfe4e3;
+}
+
+
+/* =========================================================
+   7. FEATURE ICONS
+   ========================================================= */
+
+.feature-icon {
+    width: 66px;
+
+    height: 66px;
+
+    margin-bottom: 25px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 17px;
+
+    background: #e7f6f4;
+
+    font-size: 31px;
+}
+
+
+/* Medicine */
+
+.medicine-card .feature-icon {
+    background: #e5f5f3;
+}
+
+
+/* Emergency */
+
+.emergency-card .feature-icon {
+    background: #fff0ed;
+}
+
+
+/* Games */
+
+.games-card .feature-icon {
+    background: #eeeefe;
+}
+
+
+/* Safety */
+
+.safety-card .feature-icon {
+    background: #fff5dc;
+}
+
+
+/* =========================================================
+   8. FEATURE CONTENT
+   ========================================================= */
+
+.feature-content {
+    display: flex;
+
+    flex-direction: column;
+
+    height: 100%;
+}
+
+
+.feature-content h3 {
+    margin:
+        0
+        0
+        14px;
+
+    color: #173f46;
+
+    font-size: 24px;
+
+    line-height: 1.25;
+}
+
+
+.feature-content p {
+    margin: 0;
+
+    color: #657679;
+
+    font-size: 16px;
+
+    line-height: 1.65;
+}
+
+
+.feature-action {
+    display: inline-block;
+
+    margin-top: auto;
+
+    padding-top: 25px;
+
+    color: #168c91;
+
+    font-size: 16px;
+
+    font-weight: 900;
+}
+
+
+.emergency-card .feature-action {
+    color: #d83232;
+}
+
+
+/* =========================================================
+   9. CTA SECTION
+   ========================================================= */
+
+.cta {
+    width: 100%;
+
+    padding:
+        100px
+        20px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #168c91,
+            #216679
+        );
+
+    color: #ffffff;
+
+    position: relative;
+
+    overflow: hidden;
+}
+
+
+.cta::before {
+    content: "";
+
+    position: absolute;
+
+    width: 260px;
+
+    height: 260px;
+
+    left: -110px;
+
+    top: -110px;
+
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, 0.08);
+}
+
+
+.cta-content {
+    position: relative;
+
+    z-index: 1;
+
+    width: min(850px, 90%);
+
+    margin: auto;
+
+    text-align: center;
+}
+
+
+.cta-badge {
+    display: block;
+
+    margin-bottom: 18px;
+
+    font-size: 14px;
+
+    font-weight: 900;
+
+    letter-spacing: 3px;
+}
+
+
+.cta h2 {
+    margin:
+        0
+        0
+        18px;
+
+    font-size:
+        clamp(38px, 5vw, 56px);
+
+    line-height: 1.1;
+}
+
+
+.cta p {
+    max-width: 700px;
+
+    margin:
+        0
+        auto
+        30px;
+
+    font-size: 18px;
+
+    line-height: 1.7;
+
+    opacity: 0.95;
+}
+
+
+.cta-btn {
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding:
+        14px
+        25px;
+
+    border-radius: 12px;
+
+    background: #ffffff;
+
+    color: #167c80;
+
+    text-decoration: none;
+
+    font-weight: 900;
+
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease;
+}
+
+
+.cta-btn:hover {
+    transform: translateY(-3px);
+
+    background: #eefafa;
+}
+
+
+/* =========================================================
+   10. FOOTER
+   ========================================================= */
+
+.site-footer {
+    background: #173f46;
+
+    color: #ffffff;
+
+    padding:
+        60px
+        6%
+        25px;
+}
+
+
+.footer-container {
+    width: min(1200px, 100%);
+
+    margin: auto;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    gap: 50px;
+}
+
+
+.footer-container h2 {
+    margin:
+        0
+        0
+        12px;
+
+    font-size: 26px;
+}
+
+
+.footer-container p {
+    margin: 0;
+
+    color: #c9d8d9;
+
+    font-size: 16px;
+}
+
+
+.footer-links {
+    display: flex;
+
+    align-items: center;
+
+    gap: 25px;
+
+    flex-wrap: wrap;
+}
+
+
+.footer-links a {
+    color: #d7e5e5;
+
+    text-decoration: none;
+
+    font-size: 15px;
+
+    font-weight: 700;
+
+    transition: color 0.2s ease;
+}
+
+
+.footer-links a:hover {
+    color: #ffffff;
+}
+
+
+.footer-bottom {
+    width: min(1200px, 100%);
+
+    margin:
+        45px
+        auto
+        0;
+
+    padding-top: 20px;
+
+    border-top:
+        1px solid
+        rgba(255, 255, 255, 0.15);
+
+    color: #bfd0d1;
+
+    font-size: 14px;
+
+    text-align: center;
+}
+
+
+/* =========================================================
+   11. EMERGENCY PAGE
+   ========================================================= */
+
+.emergency-page {
+    width: min(1250px, 92%);
+
+    margin: auto;
+
+    padding:
+        70px
+        0
+        100px;
+
+    text-align: center;
+}
+
+
+.emergency-page h1 {
+    margin:
+        0
+        0
+        20px;
+
+    color: #173f46;
+
+    font-size:
+        clamp(42px, 6vw, 68px);
+}
+
+
+.emergency-page > p {
+    max-width: 800px;
+
+    margin:
+        0
+        auto
+        35px;
+
+    color: #657679;
+
+    font-size: 18px;
+
+    line-height: 1.7;
+}
+
+
+.emergency-help-btn {
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding:
+        17px
+        32px;
+
+    margin-bottom: 65px;
+
+    background: #df2929;
+
+    color: #ffffff;
+
+    border-radius: 15px;
+
+    text-decoration: none;
+
+    font-size: 20px;
+
+    font-weight: 900;
+
+    box-shadow:
+        0 8px 20px rgba(223, 41, 41, 0.2);
+
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease;
+}
+
+
+.emergency-help-btn:hover {
+    background: #c82020;
+
+    transform: translateY(-3px);
+}
+
+
+.emergency-services {
+    width: 100%;
+}
+
+
+.emergency-services h2 {
+    margin:
+        0
+        0
+        10px;
+
+    color: #173f46;
+
+    font-size: 36px;
+}
+
+
+.emergency-services > p {
+    margin:
+        0
+        40px;
+
+    color: #657679;
+
+    font-size: 17px;
+}
+
+
+.emergency-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 24px;
+}
+
+
+.emergency-card {
+    background: #ffffff;
+
+    border:
+        1px solid #eadfdf;
+
+    border-radius: 18px;
+
+    padding: 30px 22px;
+
+    box-shadow:
+        0 8px 25px rgba(80, 50, 50, 0.07);
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+}
+
+
+.emergency-icon {
+    width: 70px;
+
+    height: 70px;
+
+    margin-bottom: 20px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background: #fff0ef;
+
+    border-radius: 17px;
+
+    font-size: 34px;
+}
+
+
+.emergency-card h3 {
+    margin:
+        0
+        0
+        12px;
+
+    color: #173f46;
+
+    font-size: 23px;
+}
+
+
+.emergency-card p {
+    min-height: 75px;
+
+    margin:
+        0
+        0
+        25px;
+
+    color: #657679;
+
+    font-size: 15px;
+
+    line-height: 1.6;
+}
+
+
+.emergency-call-btn {
+    width: 100%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 13px;
+
+    background: #df2929;
+
+    color: #ffffff;
+
+    border-radius: 11px;
+
+    text-decoration: none;
+
+    font-weight: 900;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+.emergency-call-btn:hover {
+    background: #c82020;
+
+    transform: translateY(-2px);
+}
+
+
+/* =========================================================
+   12. SAFETY & CARE PAGE
+   ========================================================= */
+
+.safety-page {
+    width: min(1100px, 92%);
+
+    margin: auto;
+
+    padding:
+        70px
+        0
+        100px;
+
+    text-align: center;
+}
+
+
+.safety-header {
+    max-width: 800px;
+
+    margin:
+        0
+        auto
+        55px;
+}
+
+
+.safety-icon {
+    width: 82px;
+
+    height: 82px;
+
+    margin:
+        0
+        auto
+        25px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 20px;
+
+    background: #fff4dc;
+
+    font-size: 42px;
+}
+
+
+.safety-header h1 {
+    margin:
+        0
+        0
+        18px;
+
+    color: #173f46;
+
+    font-size:
+        clamp(42px, 6vw, 64px);
+}
+
+
+.safety-header p {
+    margin: 0;
+
+    color: #657679;
+
+    font-size: 18px;
+
+    line-height: 1.7;
+}
+
+
+/* Gas timer */
+
+.gas-timer-card {
+    width: min(700px, 100%);
+
+    margin: auto;
+
+    padding:
+        45px
+        35px;
+
+    background: #ffffff;
+
+    border:
+        1px solid #dfebeb;
+
+    border-radius: 22px;
+
+    box-shadow:
+        0 10px 35px rgba(30, 60, 65, 0.08);
+}
+
+
+.gas-timer-card h2 {
+    margin:
+        0
+        0
+        12px;
+
+    color: #173f46;
+
+    font-size: 34px;
+}
+
+
+.gas-timer-card > p {
+    margin:
+        0
+        30px;
+
+    color: #657679;
+
+    font-size: 17px;
+
+    line-height: 1.6;
+}
+
+
+.timer-display {
+    padding:
+        25px
+        15px;
+
+    margin-bottom: 30px;
+
+    background: #f4faf9;
+
+    border:
+        2px solid #d9eceb;
+
+    border-radius: 17px;
+}
+
+
+.timer-display .time {
+    color: #173f46;
+
+    font-size:
+        clamp(55px, 10vw, 85px);
+
+    font-weight: 900;
+
+    letter-spacing: 4px;
+
+    line-height: 1;
+}
+
+
+.timer-display .timer-status {
+    margin-top: 15px;
+
+    color: #657679;
+
+    font-size: 16px;
+
+    font-weight: 700;
+}
+
+
+.quick-timer {
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 12px;
+
+    flex-wrap: wrap;
+
+    margin-bottom: 25px;
+}
+
+
+.quick-timer button,
+.timer-controls button {
+    border: none;
+
+    border-radius: 11px;
+
+    padding:
+        12px
+        20px;
+
+    background: #168c91;
+
+    color: #ffffff;
+
+    font-family: inherit;
+
+    font-size: 16px;
+
+    font-weight: 800;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+.quick-timer button:hover,
+.timer-controls button:hover {
+    background: #126f73;
+
+    transform: translateY(-2px);
+}
+
+
+.manual-timer {
+    margin-top: 30px;
+
+    padding-top: 30px;
+
+    border-top:
+        1px solid #e1eeee;
+}
+
+
+.manual-timer h3 {
+    margin:
+        0
+        0
+        18px;
+
+    color: #173f46;
+
+    font-size: 21px;
+}
+
+
+.manual-timer input {
+    width: 110px;
+
+    padding:
+        12px
+        14px;
+
+    border:
+        2px solid #d8e8e7;
+
+    border-radius: 10px;
+
+    font-family: inherit;
+
+    font-size: 17px;
+
+    text-align: center;
+
+    outline: none;
+}
+
+
+.manual-timer input:focus {
+    border-color: #168c91;
+}
+
+
+.timer-controls {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 10px;
+
+    flex-wrap: wrap;
+
+    margin-top: 22px;
+}
+
+
+/* =========================================================
+   13. GAMES PAGE
+   ========================================================= */
+
+.games-page {
+    width: min(1200px, 92%);
+
+    margin: auto;
+
+    padding:
+        70px
+        0
+        90px;
+}
+
+
+.games-header {
+    max-width: 800px;
+
+    margin:
+        0
+        auto
+        55px;
+
+    text-align: center;
+}
+
+
+.games-header .eyebrow {
+    margin-bottom: 15px;
+
+    color: #168c91;
+
+    font-size: 14px;
+
+    font-weight: 900;
+
+    letter-spacing: 3px;
+}
+
+
+.games-header h1 {
+    margin:
+        0
+        0
+        15px;
+
+    color: #173f46;
+
+    font-size:
+        clamp(42px, 6vw, 64px);
+}
+
+
+.games-header p {
+    margin: 0;
+
+    color: #657679;
+
+    font-size: 18px;
+
+    line-height: 1.7;
+}
+
+
+.games-grid {
+    max-width: 1050px;
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 25px;
+}
+
+
+.game-card {
+    min-height: 300px;
+
+    padding: 32px;
+
+    background: #ffffff;
+
+    border:
+        1px solid #e3eeee;
+
+    border-radius: 18px;
+
+    box-shadow:
+        0 7px 24px rgba(30, 60, 65, 0.07);
+
+    display: flex;
+
+    flex-direction: column;
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+
+.game-card:hover {
+    transform: translateY(-6px);
+
+    box-shadow:
+        0 15px 32px rgba(30, 60, 65, 0.13);
+}
+
+
+.game-icon {
+    width: 60px;
+
+    height: 60px;
+
+    margin-bottom: 22px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 15px;
+
+    background: #e7f6f4;
+
+    font-size: 28px;
+}
+
+
+.game-card:nth-child(2) .game-icon {
+    background: #fff3df;
+}
+
+
+.game-card:nth-child(3) .game-icon {
+    background: #eeeaff;
+}
+
+
+.game-card:nth-child(4) .game-icon {
+    background: #eef0ff;
+}
+
+
+.game-card h2 {
+    margin:
+        0
+        0
+        10px;
+
+    color: #173f46;
+
+    font-size: 25px;
+}
+
+
+.game-card p {
+    margin: 0;
+
+    color: #657679;
+
+    font-size: 16px;
+
+    line-height: 1.6;
+}
+
+
+.game-btn {
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    width: fit-content;
+
+    margin-top: auto;
+
+    padding:
+        12px
+        20px;
+
+    background: #167c80;
+
+    color: #ffffff;
+
+    text-decoration: none;
+
+    border-radius: 11px;
+
+    font-weight: 800;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+.game-btn:hover {
+    background: #126a6d;
+
+    transform: translateY(-2px);
+}
+
+
+.games-bottom {
+    text-align: center;
+
+    margin-top: 45px;
+}
+
+
+.games-home-btn {
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding:
+        12px
+        20px;
+
+    border:
+        2px solid #168c91;
+
+    border-radius: 11px;
+
+    background: #ffffff;
+
+    color: #167c80;
+
+    text-decoration: none;
+
+    font-weight: 800;
+}
+
+
+.games-home-btn:hover {
+    background: #eaf6f5;
+}
+
+
+/* =========================================================
+   14. INDIVIDUAL GAME PAGES
+   ========================================================= */
+
+.game-page {
+    width: 100%;
+
+    min-height: calc(100vh - 78px);
+
+    padding:
+        60px
+        20px;
+
+    display: flex;
+
+    align-items: flex-start;
+
+    justify-content: center;
+}
+
+
+.game-container {
+    width: min(900px, 92%);
+
+    margin: 0 auto;
+
+    padding: 45px;
+
+    background: #ffffff;
+
+    border:
+        1px solid #e1eeee;
+
+    border-radius: 24px;
+
+    box-shadow:
+        0 10px 35px rgba(30, 60, 65, 0.08);
+
+    text-align: center;
+}
+
+
+.game-container h1 {
+    margin:
+        0
+        0
+        18px;
+
+    color: #173f46;
+
+    font-size:
+        clamp(34px, 5vw, 46px);
+}
+
+
+.game-container p {
+    color: #657679;
+
+    font-size: 17px;
+
+    line-height: 1.6;
+}
+
+
+.game-container button {
+    border: none;
+
+    border-radius: 11px;
+
+    padding:
+        13px
+        22px;
+
+    background: #168c91;
+
+    color: #ffffff;
+
+    font-family: inherit;
+
+    font-size: 16px;
+
+    font-weight: 800;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+.game-container button:hover {
+    background: #126f73;
+
+    transform: translateY(-2px);
+}
+
+
+.game-container input {
+    padding:
+        13px
+        16px;
+
+    border:
+        2px solid #d8e8e7;
+
+    border-radius: 10px;
+
+    font-family: inherit;
+
+    font-size: 16px;
+
+    outline: none;
+
+    color: #173f46;
+}
+
+
+.game-container input:focus {
+    border-color: #168c91;
+}
+
+
+#result,
+#message,
+#output {
+    margin:
+        25px
+        auto;
+
+    padding:
+        18px
+        22px;
+
+    max-width: 650px;
+
+    background: #eaf6f5;
+
+    border-radius: 14px;
+
+    color: #173f46;
+
+    font-weight: 700;
+}
+
+
+.back-button {
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    margin-top: 25px;
+
+    padding:
+        12px
+        22px;
+
+    border:
+        2px solid #168c91;
+
+    border-radius: 11px;
+
+    background: #ffffff;
+
+    color: #168c91;
+
+    text-decoration: none;
+
+    font-weight: 800;
+}
+
+
+.back-button:hover {
+    background: #eaf6f5;
+}
+
+
+/* =========================================================
+   15. MEDICINE PAGE
+   ========================================================= */
+
+.medicine-page,
+.medicines-page {
+    width: min(1200px, 92%);
+
+    margin: auto;
+
+    padding:
+        65px
+        0
+        90px;
+
+    background: #f4faf9;
+}
+
+
+.medicine-page h1,
+.medicines-page h1 {
+    color: #173f46;
+}
+
+
+.medicine-page h2,
+.medicines-page h2 {
+    color: #173f46;
+}
+
+
+.medicine-column,
+.medicine-section,
+.medicine-time-card,
+.time-section {
+    background: #eaf6f5;
+
+    border:
+        1px solid #d9ecea;
+
+    border-radius: 18px;
+
+    padding: 25px;
+}
+
+
+.medicine-card {
+    background: #ffffff;
+
+    border:
+        1px solid #e1eeee;
+
+    border-radius: 15px;
+
+    padding: 22px;
+
+    box-shadow:
+        0 6px 20px rgba(30, 60, 65, 0.06);
+}
+
+
+.add-medicine,
+.add-medicine-btn,
+.medicine-add-btn {
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background: #168c91 !important;
+
+    color: #ffffff !important;
+
+    border: none;
+
+    border-radius: 11px;
+
+    padding:
+        12px
+        20px;
+
+    font-weight: 800;
+
+    text-decoration: none;
+
+    cursor: pointer;
+}
+
+
+.add-medicine:hover,
+.add-medicine-btn:hover,
+.medicine-add-btn:hover {
+    background: #126f73 !important;
+}
+
+
+.taken,
+.taken-btn,
+.btn-taken {
+    background: #2f8f83 !important;
+
+    color: #ffffff !important;
+}
+
+
+.skipped,
+.skipped-btn,
+.btn-skipped {
+    background: #d95c5c !important;
+
+    color: #ffffff !important;
+}
+
+
+.remove,
+.remove-btn,
+.btn-remove {
+    background: #687477 !important;
+
+    color: #ffffff !important;
+}
+
+
+.low-stock,
+.low-stock-warning {
+    color: #d83b3b;
+}
+
+
+.no-medicines,
+.empty-medicine {
+    color: #718083;
+}
+
+
+/* =========================================================
+   16. ADD EMERGENCY CONTACT PAGE
+   ========================================================= */
+
+.contact-form-page {
+    width: min(700px, 92%);
+
+    margin: auto;
+
+    padding:
+        70px
+        0
+        90px;
+}
+
+
+.contact-form-page form {
+    padding: 35px;
+
+    background: #ffffff;
+
+    border:
+        1px solid #e1eeee;
+
+    border-radius: 20px;
+
+    box-shadow:
+        0 10px 30px rgba(30, 60, 65, 0.07);
+}
+
+
+.contact-form-page input,
+.contact-form-page select,
+.contact-form-page textarea {
+    width: 100%;
+
+    padding:
+        13px
+        15px;
+
+    margin-bottom: 18px;
+
+    border:
+        2px solid #d8e8e7;
+
+    border-radius: 10px;
+
+    font-family: inherit;
+
+    font-size: 16px;
+
+    outline: none;
+}
+
+
+.contact-form-page input:focus,
+.contact-form-page select:focus,
+.contact-form-page textarea:focus {
+    border-color: #168c91;
+}
+
+
+/* =========================================================
+   17. RESPONSIVE — TABLET
+   ========================================================= */
+
+@media (max-width: 1000px) {
+
+    .features {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+
+    .emergency-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+
+    .nav-container {
+        flex-direction: column;
+
+        padding:
+            18px
+            0;
+    }
+
+
+    .navbar {
+        justify-content: center;
+
+        flex-wrap: wrap;
+
+        gap:
+            15px
+            22px;
+    }
+
+
+    .site-header {
+        position: relative;
+    }
+
+}
+
+
+/* =========================================================
+   18. RESPONSIVE — MOBILE
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+    .hero {
+        padding:
+            55px
+            15px
+            60px;
+    }
+
+
+    .hero h1 {
+        font-size: 50px;
+    }
+
+
+    .hero p {
+        font-size: 17px;
+    }
+
+
+    .hero-buttons {
+        flex-direction: column;
+    }
+
+
+    .hero-btn {
+        width: 100%;
+
+        max-width: 320px;
+    }
+
+
+    .features-section {
+        padding-bottom: 65px;
+    }
+
+
+    .features {
+        grid-template-columns: 1fr;
+    }
+
+
+    .feature-box {
+        min-height: 300px;
+    }
+
+
+    .section-heading {
+        margin-bottom: 35px;
+    }
+
+
+    .section-heading h2 {
+        font-size: 32px;
+    }
+
+
+    .cta {
+        padding:
+            70px
+            20px;
+    }
+
+
+    .cta h2 {
+        font-size: 40px;
+    }
+
+
+    .footer-container {
+        flex-direction: column;
+    }
+
+
+    .footer-links {
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 14px;
+    }
+
+
+    .emergency-page,
+    .safety-page,
+    .games-page {
+        padding:
+            50px
+            0
+            70px;
+    }
+
+
+    .emergency-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    .emergency-card p {
+        min-height: auto;
+    }
+
+
+    .games-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    .game-card {
+        min-height: 270px;
+
+        padding: 25px;
+    }
+
+
+    .game-container {
+        width: 92%;
+
+        padding:
+            28px
+            20px;
+    }
+
+
+    .game-page {
+        padding:
+            35px
+            10px;
+    }
+
+
+    .gas-timer-card {
+        padding:
+            30px
+            18px;
+    }
+
+
+    .timer-display .time {
+        font-size: 55px;
+    }
+
+
+    .manual-timer input {
+        width: 90px;
+    }
+
+}
+
+
+/* =========================================================
+   19. VERY SMALL SCREENS
+   ========================================================= */
+
+@media (max-width: 450px) {
+
+    .navbar {
+        gap:
+            10px
+            15px;
+    }
+
+
+    .navbar a {
+        font-size: 15px;
+    }
+
+
+    .logo {
+        font-size: 24px;
+    }
+
+
+    .hero h1 {
+        font-size: 43px;
+    }
+
+
+    .hero h2 {
+        font-size: 28px;
+    }
+
+
+    .feature-box {
+        padding: 25px 22px;
+    }
+
+
+    .game-container h1 {
+        font-size: 32px;
+    }
+
+}
+/* =========================================
+   CONTACT SECTION
+========================================= */
+
+.contact-section {
+
+    padding: 90px 8%;
+
+    background: #f4faf9;
+
+}
+
+
+.contact-container {
+
+    max-width: 1200px;
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns: 0.9fr 1.3fr;
+
+    gap: 55px;
+
+    align-items: center;
+
+}
+
+
+/* =========================================
+   IMAGE
+========================================= */
+
+.contact-image {
+
+    width: 100%;
+
+    height: 560px;
+
+    overflow: hidden;
+
+    border-radius: 18px;
+
+}
+
+
+.contact-image img {
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+
+    display: block;
+
+}
+
+
+/* =========================================
+   CONTENT
+========================================= */
+
+.contact-content h1 {
+
+    font-size: 58px;
+
+    color: #173f45;
+
+    margin-bottom: 35px;
+
+    font-weight: 700;
+
+}
+
+
+/* =========================================
+   CONTACT BOX
+========================================= */
+
+.contact-box {
+
+    display: grid;
+
+    grid-template-columns: 1.5fr 0.8fr;
+
+    gap: 45px;
+
+    padding: 40px;
+
+    background: white;
+
+    border: 1px solid #d5e4e2;
+
+    border-radius: 18px;
+
+    box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+
+}
+
+
+/* =========================================
+   FORM
+========================================= */
+
+.form-group {
+
+    margin-bottom: 25px;
+
+}
+
+
+.form-group label {
+
+    display: block;
+
+    font-size: 16px;
+
+    font-weight: 600;
+
+    color: #244b50;
+
+    margin-bottom: 8px;
+
+}
+
+
+.form-group input,
+.form-group textarea {
+
+    width: 100%;
+
+    padding: 14px 16px;
+
+    border: 1px solid #cbdad8;
+
+    border-radius: 8px;
+
+    font-size: 15px;
+
+    font-family: inherit;
+
+    box-sizing: border-box;
+
+    outline: none;
+
+}
+
+
+.form-group input:focus,
+.form-group textarea:focus {
+
+    border-color: #2c9eaa;
+
+    box-shadow: 0 0 0 3px rgba(44,158,170,0.12);
+
+}
+
+
+.form-group textarea {
+
+    height: 120px;
+
+    resize: vertical;
+
+}
+
+
+/* =========================================
+   BUTTON
+========================================= */
+
+.contact-box button {
+
+    width: 100%;
+
+    padding: 15px;
+
+    border: none;
+
+    border-radius: 30px;
+
+    background: #299eaa;
+
+    color: white;
+
+    font-size: 17px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+
+}
+
+
+.contact-box button:hover {
+
+    background: #217f89;
+
+    transform: translateY(-2px);
+
+}
+
+
+/* =========================================
+   CONTACT INFORMATION
+========================================= */
+.contact-info {
+    padding-top: 10px;
+}
+.contact-info h3 {
+    color: #173f45;
+    font-size: 20px;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+.contact-info a {
+    color: #299eaa;
+    font-size: 16px;
+    text-decoration: none;
+    word-break: break-word;
+}
+.contact-info p {
+    color: #60777a;
+    line-height: 1.6;
+}
+/* =========================================
+   SOCIAL LINKS
+========================================= */
+.social-links {
+    display: flex;
+    gap: 15px;
+    margin-top: 25px;
+}
+.social-links a {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: #173f45;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+}
+.social-links a:hover {
+    background: #299eaa;
+    transform: translateY(-3px);
+}
+/* =========================================
+   MOBILE
+========================================= */
+@media (max-width: 900px) {
+    .contact-container {
+        grid-template-columns: 1fr;
+    }
+    .contact-image {
+        height: 400px;
+    }
+    .contact-content h1 {
+        font-size: 42px;
+    }
+    .contact-box {
+        grid-template-columns: 1fr;
+    }
+}
+@media (max-width: 500px) {
+    .contact-section {
+        padding: 60px 20px;
+    }
+    .contact-image {
+        height: 300px;
+    }
+    .contact-content h1 {
+        font-size: 36px;
+    }
+    .contact-box {
+        padding: 25px;
+    }
+
+}
+/* ========================================= */
+/* AI CARE360 ASSISTANT */
+/* ========================================= */
+
+.ai-bot {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    z-index: 9999;
+}
+
+
+/* CHAT BUTTON */
+
+.ai-button {
+
+    width: 60px;
+    height: 60px;
+
+    border: none;
+    border-radius: 50%;
+
+    background: #249eaa;
+
+    color: white;
+
+    font-size: 28px;
+
+    cursor: pointer;
+
+    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+
+    transition: 0.3s;
+}
+
+
+.ai-button:hover {
+
+    transform: scale(1.08);
+
+}
+
+
+/* CHAT WINDOW */
+
+.ai-chat {
+
+    position: absolute;
+
+    bottom: 75px;
+    right: 0;
+
+    width: 350px;
+    height: 500px;
+
+    background: white;
+
+    border-radius: 20px;
+
+    box-shadow:
+        0 15px 50px rgba(0,0,0,0.2);
+
+    overflow: hidden;
+
+    display: none;
+
+    flex-direction: column;
+
+    border: 1px solid #d9eeee;
+
+}
+
+
+.ai-chat.active {
+
+    display: flex;
+
+}
+
+
+/* HEADER */
+
+.ai-header {
+
+    background: #174b52;
+
+    color: white;
+
+    padding: 18px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+}
+
+
+.ai-header strong {
+
+    display: block;
+
+    font-size: 16px;
+
+}
+
+
+.ai-header small {
+
+    opacity: 0.8;
+
+}
+
+
+#ai-close {
+
+    border: none;
+
+    background: transparent;
+
+    color: white;
+
+    font-size: 25px;
+
+    cursor: pointer;
+
+}
+
+
+/* MESSAGES */
+
+.ai-messages {
+
+    flex: 1;
+
+    padding: 15px;
+
+    overflow-y: auto;
+
+    background: #f3fafa;
+
+}
+
+
+.bot-message,
+.user-message {
+
+    max-width: 80%;
+
+    padding: 12px 15px;
+
+    margin-bottom: 12px;
+
+    border-radius: 15px;
+
+    line-height: 1.5;
+
+    font-size: 14px;
+
+}
+
+
+/* BOT */
+
+.bot-message {
+
+    background: white;
+
+    color: #174b52;
+
+    border: 1px solid #dceeee;
+
+}
+
+
+/* USER */
+
+.user-message {
+
+    background: #249eaa;
+
+    color: white;
+
+    margin-left: auto;
+
+}
+
+
+/* INPUT */
+
+.ai-input-area {
+
+    display: flex;
+
+    padding: 12px;
+
+    border-top: 1px solid #ddd;
+
+    background: white;
+
+}
+
+
+#ai-input {
+
+    flex: 1;
+
+    border: 1px solid #d3e4e4;
+
+    border-radius: 25px;
+
+    padding: 12px 15px;
+
+    outline: none;
+
+}
+
+
+#ai-send {
+
+    width: 45px;
+
+    height: 45px;
+
+    margin-left: 8px;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background: #249eaa;
+
+    color: white;
+
+    cursor: pointer;
+
+    font-size: 18px;
+
+}

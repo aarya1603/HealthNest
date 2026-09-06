@@ -1,0 +1,731 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Tic-Tac-Toe | HealthNest
+{% endblock %}
+
+
+{% block content %}
+
+<style>
+
+/* =====================================================
+   HEALTHNEST TIC-TAC-TOE
+   ===================================================== */
+
+
+/* ================= PAGE ================= */
+
+.ttt-page {
+
+    min-height: 650px;
+
+    background: #f4faf9;
+
+    padding: 60px 20px 80px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: flex-start;
+
+    box-sizing: border-box;
+}
+
+
+/* ================= GAME CARD ================= */
+
+.ttt-card {
+
+    width: min(850px, 100%);
+
+    background: #ffffff;
+
+    border: 1px solid #e1eeee;
+
+    border-radius: 24px;
+
+    padding: 45px 35px 50px;
+
+    text-align: center;
+
+    box-shadow:
+        0 10px 35px rgba(30, 60, 65, 0.08);
+
+    box-sizing: border-box;
+}
+
+
+/* ================= TITLE ================= */
+
+.ttt-card h1 {
+
+    margin: 0 0 15px;
+
+    color: #173f46;
+
+    font-size: clamp(32px, 5vw, 46px);
+
+    line-height: 1.2;
+}
+
+
+/* ================= STATUS ================= */
+
+#status {
+
+    min-height: 34px;
+
+    margin: 10px 0 25px;
+
+    color: #173f46;
+
+    font-size: 22px;
+
+    font-weight: 800;
+}
+
+
+/* ================= BOARD ================= */
+
+.board {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 110px);
+
+    gap: 12px;
+
+    justify-content: center;
+
+    margin: 0 auto 30px;
+}
+
+
+/* ================= CELLS ================= */
+
+.cell {
+
+    width: 110px;
+
+    height: 110px;
+
+    padding: 0;
+
+    border: 3px solid #b9d9da;
+
+    border-radius: 14px;
+
+    background: #ffffff;
+
+    color: #173f46;
+
+    font-size: 52px;
+
+    font-weight: 800;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.15s ease;
+}
+
+
+/* ================= CELL HOVER ================= */
+
+.cell:hover {
+
+    background: #eaf6f5;
+
+    border-color: #168c91;
+
+    transform: translateY(-2px);
+}
+
+
+/* ================= WINNER ================= */
+
+.cell.winner {
+
+    border-color: #168c91;
+
+    background: #e1f4f2;
+
+    box-shadow:
+        0 0 0 3px rgba(22, 140, 145, 0.12);
+}
+
+
+/* ================= RESET BUTTON ================= */
+
+#reset {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    min-width: 180px;
+
+    height: 48px;
+
+    padding: 0 22px;
+
+    border: none;
+
+    border-radius: 11px;
+
+    background: #168c91;
+
+    color: #ffffff;
+
+    font-size: 16px;
+
+    font-weight: 800;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+#reset:hover {
+
+    background: #126f73;
+
+    transform: translateY(-2px);
+}
+
+
+/* ================= BACK BUTTON ================= */
+
+.ttt-back-btn {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    min-width: 180px;
+
+    height: 46px;
+
+    margin-top: 25px;
+
+    padding: 0 22px;
+
+    box-sizing: border-box;
+
+    border: 2px solid #168c91;
+
+    border-radius: 11px;
+
+    background: #ffffff;
+
+    color: #168c91;
+
+    text-decoration: none;
+
+    font-size: 16px;
+
+    font-weight: 800;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+.ttt-back-btn:hover {
+
+    background: #eaf6f5;
+
+    transform: translateY(-2px);
+}
+
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 600px) {
+
+    .ttt-page {
+
+        padding:
+            35px
+            10px
+            60px;
+    }
+
+
+    .ttt-card {
+
+        padding:
+            30px
+            15px
+            35px;
+
+        border-radius: 20px;
+    }
+
+
+    .ttt-card h1 {
+
+        font-size: 32px;
+    }
+
+
+    #status {
+
+        font-size: 19px;
+    }
+
+
+    .board {
+
+        grid-template-columns:
+            repeat(3, 82px);
+
+        gap: 9px;
+    }
+
+
+    .cell {
+
+        width: 82px;
+
+        height: 82px;
+
+        font-size: 40px;
+
+        border-radius: 11px;
+    }
+
+
+    #reset,
+    .ttt-back-btn {
+
+        width: 100%;
+
+        max-width: 260px;
+    }
+
+}
+
+</style>
+
+
+<!-- =====================================================
+     TIC-TAC-TOE
+     ===================================================== -->
+
+<section class="ttt-page">
+
+    <div class="ttt-card">
+
+
+        <!-- TITLE -->
+
+        <h1>
+            🎮 Tic-Tac-Toe
+        </h1>
+
+
+        <!-- STATUS -->
+
+        <div id="status">
+            Ready to play?
+        </div>
+
+
+        <!-- BOARD -->
+
+        <div
+            class="board"
+            id="board">
+        </div>
+
+
+        <!-- RESET -->
+
+        <button
+            type="button"
+            id="reset">
+
+            Play Again
+
+        </button>
+
+
+        <!-- BACK -->
+
+        <div>
+
+            <a
+                href="{% url 'games' %}"
+                class="ttt-back-btn">
+
+                ← Back to Games
+
+            </a>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+<script>
+
+/* =====================================================
+   TIC-TAC-TOE GAME LOGIC
+   ===================================================== */
+
+
+const BOARD_SIZE = 3;
+
+
+const players = [
+
+    {
+        label: "X",
+        color: "#168c91"
+    },
+
+    {
+        label: "O",
+        color: "#d05a5a"
+    }
+
+];
+
+
+let currentPlayerIndex = 0;
+
+let board = [];
+
+let hasWinner = false;
+
+
+const status =
+    document.getElementById("status");
+
+
+const boardDiv =
+    document.getElementById("board");
+
+
+const resetBtn =
+    document.getElementById("reset");
+
+
+/* =====================================================
+   START / RESET GAME
+   ===================================================== */
+
+function initGame() {
+
+    board =
+        Array(
+            BOARD_SIZE * BOARD_SIZE
+        ).fill("");
+
+
+    hasWinner = false;
+
+    currentPlayerIndex = 0;
+
+
+    status.textContent =
+        "Ready to play?";
+
+
+    status.style.color =
+        "#173f46";
+
+
+    boardDiv.innerHTML = "";
+
+
+    board.forEach(
+        (_, index) => {
+
+            const cell =
+                document.createElement(
+                    "button"
+                );
+
+
+            cell.classList.add(
+                "cell"
+            );
+
+
+            cell.type = "button";
+
+
+            cell.addEventListener(
+                "click",
+                () => makeMove(
+                    index,
+                    cell
+                )
+            );
+
+
+            boardDiv.appendChild(
+                cell
+            );
+
+        }
+    );
+
+}
+
+
+/* =====================================================
+   MAKE MOVE
+   ===================================================== */
+
+function makeMove(index, cell) {
+
+    if (
+        board[index] !== "" ||
+        hasWinner
+    ) {
+
+        status.textContent =
+            "Invalid move. Try again.";
+
+
+        status.style.color =
+            "#c98a35";
+
+
+        return;
+
+    }
+
+
+    const player =
+        players[
+            currentPlayerIndex
+        ];
+
+
+    board[index] =
+        player.label;
+
+
+    cell.textContent =
+        player.label;
+
+
+    cell.style.color =
+        player.color;
+
+
+    /* CHECK WINNER */
+
+    if (checkWinner()) {
+
+        hasWinner = true;
+
+
+        status.textContent =
+            `Player "${player.label}" wins!`;
+
+
+        status.style.color =
+            player.color;
+
+
+        highlightWinner();
+
+
+    }
+
+
+    /* CHECK TIE */
+
+    else if (
+        board.every(
+            c => c !== ""
+        )
+    ) {
+
+        status.textContent =
+            "It's a tie!";
+
+
+        status.style.color =
+            "#657679";
+
+    }
+
+
+    /* NEXT PLAYER */
+
+    else {
+
+        currentPlayerIndex =
+            (currentPlayerIndex + 1)
+            % 2;
+
+
+        status.textContent =
+            `${players[currentPlayerIndex].label}'s turn`;
+
+
+        status.style.color =
+            players[
+                currentPlayerIndex
+            ].color;
+
+    }
+
+}
+
+
+/* =====================================================
+   CHECK WINNER
+   ===================================================== */
+
+function checkWinner() {
+
+    const wins = [
+
+        [0,1,2],
+
+        [3,4,5],
+
+        [6,7,8],
+
+        [0,3,6],
+
+        [1,4,7],
+
+        [2,5,8],
+
+        [0,4,8],
+
+        [2,4,6]
+
+    ];
+
+
+    return wins.some(
+        combo => {
+
+            const [
+                a,
+                b,
+                c
+            ] = combo;
+
+
+            return (
+                board[a] &&
+                board[a] === board[b] &&
+                board[a] === board[c]
+            );
+
+        }
+    );
+
+}
+
+
+/* =====================================================
+   HIGHLIGHT WINNING CELLS
+   ===================================================== */
+
+function highlightWinner() {
+
+    const wins = [
+
+        [0,1,2],
+
+        [3,4,5],
+
+        [6,7,8],
+
+        [0,3,6],
+
+        [1,4,7],
+
+        [2,5,8],
+
+        [0,4,8],
+
+        [2,4,6]
+
+    ];
+
+
+    wins.forEach(
+        combo => {
+
+            const [
+                a,
+                b,
+                c
+            ] = combo;
+
+
+            if (
+                board[a] &&
+                board[a] === board[b] &&
+                board[a] === board[c]
+            ) {
+
+                combo.forEach(
+                    i => {
+
+                        boardDiv
+                            .children[i]
+                            .classList
+                            .add(
+                                "winner"
+                            );
+
+                    }
+                );
+
+            }
+
+        }
+    );
+
+}
+
+
+/* =====================================================
+   RESET
+   ===================================================== */
+
+resetBtn.addEventListener(
+    "click",
+    initGame
+);
+
+
+/* =====================================================
+   START GAME
+   ===================================================== */
+
+initGame();
+
+</script>
+
+
+{% endblock %}

@@ -1,0 +1,7 @@
+
+# Ignore generated files
+staticfiles/
+__pycache__/
+*.pyc
+db.sqlite3
+media/

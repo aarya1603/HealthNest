@@ -1,0 +1,296 @@
+{% extends 'base.html' %}
+
+{% block title %}HealthNest Premium | HealthNest{% endblock %}
+
+{% block content %}
+
+<style>
+
+    .subscription-page {
+        min-height: 75vh;
+        padding: 55px 20px 70px;
+        background: #f7fafc;
+        box-sizing: border-box;
+    }
+
+
+    /* HEADER */
+
+    .subscription-header {
+        max-width: 700px;
+        margin: 0 auto 35px;
+        text-align: center;
+    }
+
+    .subscription-header span {
+        display: inline-block;
+        margin-bottom: 10px;
+
+        color: #176b87;
+        font-size: 12px;
+        font-weight: 800;
+        letter-spacing: 1.5px;
+    }
+
+    .subscription-header h1 {
+        margin: 0 0 12px;
+
+        color: #123b4a;
+        font-size: 36px;
+        line-height: 1.2;
+    }
+
+    .subscription-header p {
+        margin: 0;
+
+        color: #667085;
+        font-size: 15px;
+        line-height: 1.7;
+    }
+
+
+    /* PLAN CARD */
+
+    .subscription-card {
+        width: 100%;
+        max-width: 440px;
+        margin: 0 auto;
+        padding: 35px;
+
+        box-sizing: border-box;
+
+        background: #ffffff;
+        border: 1px solid #dce8ec;
+        border-radius: 20px;
+
+        text-align: center;
+
+        box-shadow: 0 15px 40px rgba(18, 59, 74, 0.10);
+    }
+
+
+    /* BADGE */
+
+    .subscription-badge {
+        display: inline-block;
+
+        padding: 7px 14px;
+        margin-bottom: 18px;
+
+        border-radius: 20px;
+
+        background: #e8f5f7;
+        color: #176b87;
+
+        font-size: 11px;
+        font-weight: 800;
+        letter-spacing: 1px;
+    }
+
+
+    /* PLAN NAME */
+
+    .subscription-card h2 {
+        margin: 0 0 15px;
+
+        color: #123b4a;
+        font-size: 24px;
+    }
+
+
+    /* PRICE */
+
+    .subscription-price {
+        margin-bottom: 10px;
+
+        color: #176b87;
+
+        font-size: 44px;
+        font-weight: 800;
+        line-height: 1;
+    }
+
+    .subscription-price span {
+        color: #667085;
+        font-size: 15px;
+        font-weight: 500;
+    }
+
+
+    /* DESCRIPTION */
+
+    .subscription-description {
+        margin: 15px 0 25px;
+
+        color: #667085;
+        font-size: 14px;
+        line-height: 1.6;
+    }
+
+
+    /* FEATURES */
+
+    .subscription-features {
+        padding: 20px 0;
+
+        border-top: 1px solid #eaecf0;
+        border-bottom: 1px solid #eaecf0;
+
+        text-align: left;
+    }
+
+    .subscription-features div {
+        padding: 8px 0;
+
+        color: #344054;
+        font-size: 14px;
+    }
+
+
+    /* SUBSCRIBE BUTTON */
+
+    .subscribe-button {
+        display: block;
+
+        margin-top: 25px;
+        padding: 14px 20px;
+
+        border-radius: 10px;
+
+        background: #176b87;
+        color: #ffffff;
+
+        text-decoration: none;
+
+        font-size: 15px;
+        font-weight: 700;
+
+        transition: 0.2s ease;
+    }
+
+    .subscribe-button:hover {
+        background: #123b4a;
+        transform: translateY(-1px);
+    }
+
+
+    /* NOTE */
+
+    .subscription-note {
+        margin: 15px 0 0;
+
+        color: #98a2b3;
+        font-size: 12px;
+    }
+
+
+    /* MOBILE */
+
+    @media (max-width: 600px) {
+
+        .subscription-page {
+            padding: 35px 15px 50px;
+        }
+
+        .subscription-header h1 {
+            font-size: 29px;
+        }
+
+        .subscription-card {
+            padding: 28px 22px;
+        }
+
+        .subscription-price {
+            font-size: 38px;
+        }
+
+    }
+
+</style>
+
+
+<div class="subscription-page">
+
+
+    <!-- HEADER -->
+
+    <div class="subscription-header">
+
+        <span>
+            HEALTHNEST PREMIUM
+        </span>
+
+        <h1>
+            Take better care of your health.
+        </h1>
+
+        <p>
+            Get access to all HealthNest health-management features
+            with one simple monthly plan.
+        </p>
+
+    </div>
+
+
+    <!-- PLAN -->
+
+    <div class="subscription-card">
+
+        <div class="subscription-badge">
+            PREMIUM
+        </div>
+
+
+        <h2>
+            HealthNest Premium
+        </h2>
+
+
+        <div class="subscription-price">
+            ₹399
+            <span>/ month</span>
+        </div>
+
+
+        <p class="subscription-description">
+            Everything you need to manage your health
+            in one secure place.
+        </p>
+
+
+        <div class="subscription-features">
+
+            <div>✓ Medical Reports</div>
+
+            <div>✓ Report Assistant</div>
+
+            <div>✓ Health Checkups</div>
+
+            <div>✓ Medicines Management</div>
+
+            <div>✓ Insurance Management</div>
+
+            <div>✓ Trusted Contacts</div>
+
+            <div>✓ Emergency & Safety Features</div>
+
+        </div>
+
+
+        <a
+            href="#"
+            class="subscribe-button"
+        >
+            Subscribe for ₹399/month
+        </a>
+
+
+        <p class="subscription-note">
+            Secure recurring monthly subscription.
+        </p>
+
+    </div>
+
+</div>
+
+{% endblock %}

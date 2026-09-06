@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block title %}Login | HealthNest{% endblock %}
+
+{% block content %}
+
+<div class="auth-page">
+
+    <div class="auth-card">
+
+        <div class="auth-icon">
+            ✚
+        </div>
+
+        <span class="dashboard-label">
+            WELCOME BACK
+        </span>
+
+        <h1>Login to HealthNest</h1>
+
+        <p>
+            Access your personal health dashboard securely.
+        </p>
+
+        <form method="POST">
+
+            {% csrf_token %}
+
+            <div class="form-field">
+                <label>Username</label>
+                {{ form.username }}
+            </div>
+
+            <div class="form-field">
+                <label>Password</label>
+                {{ form.password }}
+            </div>
+
+            <button type="submit" class="auth-button">
+                Login
+            </button>
+
+        </form>
+
+        <p class="auth-footer">
+            Don't have an account?
+            <a href="{% url 'register' %}">
+                Create one
+            </a>
+        </p>
+
+    </div>
+
+</div>
+
+{% endblock %}
