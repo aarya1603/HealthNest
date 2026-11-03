@@ -25,6 +25,11 @@
         <form method="POST">
 
             {% csrf_token %}
+            {% if form.errors %}
+    <div class="error-message">
+        Invalid username or password. Please try again.
+    </div>
+{% endif %}
 
             <div class="form-field">
                 <label>Username</label>
@@ -39,6 +44,8 @@
             <button type="submit" class="auth-button">
                 Login
             </button>
+
+            <input type="hidden" name="next" value="{{ next }}">
 
         </form>
 
